@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gawla/cubit/cubit_logics.dart';
+import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/create_tour_page.dart';
 import 'package:gawla/pages/main_page.dart';
 import 'package:gawla/pages/tour_page.dart';
 import 'package:gawla/pages/welcome_page.dart';
+import 'package:gawla/services/data_services.dart';
+
 
 
 void main() => runApp(MyApp());
@@ -16,7 +21,13 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           primaryColor: Colors.white
       ),
-      home: MainPage(),
+      home: BlocProvider<Cubits>(//BlockProvider: injects cubits
+        create: (context)=>Cubits(
+          data: DataServices(),
+        ),//pass the class of function,create the cubit
+        child: CubitLogics(),//then show the logic
+        //pass the child that checks the cubits/states
+      ),
     );
   }
 }

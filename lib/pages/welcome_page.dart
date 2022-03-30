@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/misc/colors.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
@@ -55,7 +57,18 @@ class _welcomePageState extends State<welcomePage> {
                          SizedBox(height: 100,),
                          Container(
                            width: 300,
-                             child: ResponsiveButton(width: 100,),
+                             child: GestureDetector(
+                               onTap: (){
+                                 BlocProvider.of<Cubits>(context).getData();//holds the cubit and can access them
+                               },
+                               child: Container(
+                                   width: 100,
+                                   child: Row(
+                                     children: [
+                                       ResponsiveButton(width: 100,),
+                                     ],
+                                   )),
+                             ),
                            alignment: Alignment.bottomRight,
 
 
