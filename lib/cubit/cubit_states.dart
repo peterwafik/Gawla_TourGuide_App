@@ -23,10 +23,21 @@ class LoadingState extends CubitStates{
   List<Object> get props => [];
 
 }class LoadedState extends CubitStates{
-  LoadedState(this.places);
-  final List<DataModel> places;
+  LoadedState(this.tourCreators,this.tours);
+  final List<DataModel> tourCreators;
+  final List<TourModel> tours;
+
   @override
   // TODO: implement props
-  List<Object> get props => [places];
+  List<Object> get props => [tourCreators,tours];
+
+}class DetailState extends CubitStates{
+  DetailState(this.tourCreator,this.tour);
+  final DataModel tourCreator;
+  final TourModel tour;
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [tourCreator,tour];
 
 }

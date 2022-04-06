@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_logics.dart';
@@ -7,6 +8,7 @@ import 'package:gawla/pages/main_page.dart';
 import 'package:gawla/pages/tour_page.dart';
 import 'package:gawla/pages/welcome_page.dart';
 import 'package:gawla/services/data_services.dart';
+//first line is to guarantee "no-sound-null-safety"
 
 
 
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           primaryColor: Colors.white
       ),
+      //supportedLocales: i18n.all,
+
       home: BlocProvider<Cubits>(//BlockProvider: injects cubits
         create: (context)=>Cubits(
           data: DataServices(),

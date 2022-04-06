@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
+import 'package:gawla/pages/tour_page.dart';
 import 'package:gawla/pages/welcome_page.dart';
 
 class CubitLogics extends StatefulWidget {
@@ -22,12 +23,16 @@ class _CubitLogicsState extends State<CubitLogics> {
           if(state is WelcomeState){
             return welcomePage();
           }
+          if(state is DetailState){
+            return TourPage();
+          }
           if(state is LoadedState){
             return HomePage();
           }
           if(state is LoadingState){
             return Center(child: CircularProgressIndicator(),);
           }else{
+            print("not the required state");
             return Container();
           }
         }

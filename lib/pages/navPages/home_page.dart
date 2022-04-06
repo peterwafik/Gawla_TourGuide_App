@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/misc/colors.dart';
+import 'package:gawla/models/tour_model.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
 
@@ -26,7 +27,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       body: BlocBuilder<Cubits,CubitStates>(
         builder: (context, state){
           if(state is LoadedState){
-            var info = state.places;
+            var tourInfo = state.tours;
+            var tourCreatorInfo = state.tourCreators;
+
             return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,19 +110,25 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       controller: _tabController,
                       children: [
                         ListView.builder(
-                          itemCount: 3,
+                          itemCount: tourCreatorInfo.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              margin: const EdgeInsets.only(right: 20, top: 15),
-                              width: 200,
-                              height: 300,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white,
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/img/mountain.jpeg"),
-                                      fit: BoxFit.cover)),
+                            return GestureDetector(
+                              onTap: (){
+                                //BlocProvider.of<Cubits>(context).detailPage(tourCreatorInfo[index], tourInfo[index]);
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 20, top: 15),
+                                width: 200,
+                                height: 300,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.black,
+                                    image: DecorationImage(
+                                        //image: NetworkImage("http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com/tours"+info[1].img),
+                                        image: NetworkImage("https://dummyimage.com/216x116.png/ff4444/ffffff"),
+                                        fit: BoxFit.cover)),
+                              ),
                             );
                           },
                         ),

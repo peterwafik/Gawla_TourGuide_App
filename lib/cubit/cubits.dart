@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:gawla/models/data_model.dart';
+import 'package:gawla/models/tour_model.dart';
 import 'package:gawla/services/data_services.dart';
 
 import 'cubit_states.dart';
@@ -10,13 +12,21 @@ class Cubits extends Cubit<CubitStates> {
   } //Cubits parameters declaration are those of the InitialState()
 
   final DataServices data;
-  late final places;
+  late final tourCreators;
+  late final tours;
 
   void getData()async {
     try {
       emit(LoadingState());//show loading state
-      places = await data.getInfo();//during this try to load data
-      emit(LoadedState(places));//once data loaded, trigger the loaded state with the new updated data
+      tourCreators = await data.getTourguideInfo();//during this try to load data
+      tours = await data.getTourInfo();
+      emit(LoadedState(tourCreators,tours));//once data loaded, trigger the loaded state with the new updated data
     } catch (e) {}
+  }
+  detailPage(DataModel tourCreators,TourModel tour){
+    emit(DetailState(tourCreators, tour));
+  }
+  goHome(){
+    emit(LoadedState(tourCreators, tours));
   }
 }
