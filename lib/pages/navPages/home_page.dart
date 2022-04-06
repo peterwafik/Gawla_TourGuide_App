@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/misc/colors.dart';
+import 'package:gawla/models/data_model.dart';
 import 'package:gawla/models/tour_model.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
@@ -27,8 +28,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       body: BlocBuilder<Cubits,CubitStates>(
         builder: (context, state){
           if(state is LoadedState){
-            var tourInfo = state.tours;
-            var tourCreatorInfo = state.tourCreators;
+            List<TourModel> tourInfo = state.tours;
+            List<DataModel> tourCreatorInfo = state.tourCreators;
 
             return SingleChildScrollView(
               child: Column(
@@ -110,12 +111,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       controller: _tabController,
                       children: [
                         ListView.builder(
-                          itemCount: tourCreatorInfo.length,
+                          itemCount: tourCreatorInfo.length,//to be adjusted dynamically******
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: (){
-                                //BlocProvider.of<Cubits>(context).detailPage(tourCreatorInfo[index], tourInfo[index]);
+                                print(tourCreatorInfo);
+                                //BlocProvider.of<Cubits>(context).detailPage(tourCreatorInfo[1], tourInfo[1]);
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 20, top: 15),

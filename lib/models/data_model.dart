@@ -3,10 +3,10 @@ class DataModel {
    int id;
    String firstName;
    String lastName;
-   int birthDate;
+   String birthDate;
    String gender;
-   String language;
-   int phone;
+   String? language;
+   String phone;
    String email;
    String password;
    String userRole;
@@ -23,12 +23,12 @@ class DataModel {
     required this.lastName,
     required this.birthDate,
     required this.gender,
-    required this.language,
+    this.language,
     required this.phone,
     required this.email,
     required this.password,
     required this.userRole,
-     this.likedtours,
+    this.likedtours,
     required this.address
   });
 
@@ -39,12 +39,12 @@ class DataModel {
       lastName : json['last_name'],
       birthDate : json['birth'],
       gender : json['gender'],
-      language : json["language"],
+      //language : json["language"],
       phone : json["phone"],
       email: json['email'],
       password: json['password'],
       userRole: json["job"],
-      likedtours : json['likedtours'],
+      //likedtours : json['likedtours'],
       address: json["address"],
     );
 

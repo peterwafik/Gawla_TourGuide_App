@@ -8,7 +8,7 @@ class TourModel{
   String img;
   int price;
   //int? checkpoints;
-  int stars;
+  int? stars;
   String description;
   String location;
   int maxParticipants;
@@ -21,7 +21,7 @@ class TourModel{
     required this.img,
     required this.price,
     //this.checkpoints,
-    required this.stars,
+    this.stars,
     required this.description,
     required this.location,
     required this.maxParticipants,
@@ -38,7 +38,7 @@ class TourModel{
       img: json["cover_photo"],
       price: json["cost"],
       //checkpoints: json["checkpoints"],
-      stars: json["stars"],
+      //stars: json["stars"],
       description: json["description"],
       location: json["location"],
       visitorsJoined: json["visitors_joined"],
