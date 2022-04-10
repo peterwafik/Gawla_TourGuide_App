@@ -26,7 +26,7 @@ class DataServices{
       return <DataModel>[];
     }
   }
-  Future<List<TourModel>>getTourInfo() async {
+  Future<List<dynamic>>getTourInfo() async {
     var apiUrl = '/tours';//combined-Uri
     var link;
     http.Response res = await http.get(Uri.parse(baseUrl+apiUrl));
@@ -34,10 +34,10 @@ class DataServices{
       if(res.statusCode==200){//there's actual response from the server
         List<dynamic>list = json.decode(res.body);//cuz flutter doen't understand json but understands "mapping"
         //Now each list represents a block of code in between each []
-        print(list);
-        link =list.map((e) => TourModel.fromJson(e)).toList();
-        print(link);
-        return list.map((e) => TourModel.fromJson(e)).toList();
+        //print(list);
+        //link =list.map((e) => TourModel.fromJson(e)).toList();
+        //print(link);
+        return list.map((e) => TourModel.fromJson(e)).toList();//
       }else{
         return <TourModel>[];
 

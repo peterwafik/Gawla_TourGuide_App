@@ -2,9 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:gawla/models/data_model.dart';
 import 'package:gawla/models/tour_model.dart';
 
-abstract class CubitStates extends Equatable{
+abstract class CubitStates extends Equatable{}
 
-}
 class InitialState extends CubitStates{//every cubit app should have one initial state
   @override
   // TODO: implement props

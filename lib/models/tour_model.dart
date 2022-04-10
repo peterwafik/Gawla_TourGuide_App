@@ -2,7 +2,7 @@ import 'package:gawla/models/data_model.dart';
 
 class TourModel{
   int id;
-  DataModel tourCreator;
+  dynamic tourCreator;
   String name;
   String category;
   String img;
@@ -44,7 +44,8 @@ class TourModel{
       visitorsJoined: json["visitors_joined"],
       tourCreator: json["tour_creator"],
       maxParticipants: json["max_participants"],
-        );
+
+    );
   } //string : as the data types, dynamic: as the data of these types
 
 }

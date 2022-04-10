@@ -54,7 +54,7 @@ class _TourPageState extends State<TourPage> {
                     height: 300,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/img/mountain.jpeg"),
+                          image: NetworkImage(detail.tour.img),
                           fit: BoxFit.cover
                       ),
                     ),
@@ -66,7 +66,9 @@ class _TourPageState extends State<TourPage> {
                   top: 50,
                   child: Row(
                     children: [
-                      IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back),
+                      IconButton(onPressed: () {
+                        BlocProvider.of<Cubits>(context).goHome();
+                      }, icon: Icon(Icons.arrow_back),
                         color: Colors.white,
                       ),
 
@@ -92,7 +94,7 @@ class _TourPageState extends State<TourPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,//TO PUSH BOTH SIDES TO THE EDGE
                           children: [
                             AppLargeText(text: detail.tour.name,color: Colors.black),
-                            AppLargeText(text: "\$ 250",color: AppColors.mainColor)
+                            AppLargeText(text: "\$"+detail.tour.price.toString(),color: AppColors.mainColor)
 
                           ],
                         ),
@@ -176,6 +178,7 @@ class _TourPageState extends State<TourPage> {
         ),
 
       );
-    });
+    }
+    );
   }
 }

@@ -7,6 +7,9 @@ import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/misc/colors.dart';
 import 'package:gawla/models/data_model.dart';
 import 'package:gawla/models/tour_model.dart';
+import 'package:gawla/pages/navPages/contact_page.dart';
+import 'package:gawla/pages/navPages/edit_profile_page.dart';
+import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
 
@@ -18,6 +21,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  List pages = [
+    HomePage(),
+    ProfilePage(),
+    ContactPage(),
+    SettingsPage()
+  ];
+  int currentIndex = 0;
+  void onTap(int index){ // on tapping any of the 4 below icons an index passed to this function
+    setState(() { //the index get saved here
+      currentIndex = index; // in the name of this variable
+    });
+  }
   @override
   Widget build(BuildContext context) {
     //****** Controller declaration ******//
@@ -29,7 +44,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         builder: (context, state){
           if(state is LoadedState){
             List<TourModel> tourInfo = state.tours;
-            List<DataModel> tourCreatorInfo = state.tourCreators;
+             var tourCreatorInfo = state.tourCreators;
 
             return SingleChildScrollView(
               child: Column(
@@ -94,7 +109,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             text: "My Tours",
                           ),
                           Tab(
-                            text: "All Tours",
+                            text: "Browse",
                           ),
                         ],
                       ),
@@ -111,13 +126,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       controller: _tabController,
                       children: [
                         ListView.builder(
-                          itemCount: tourCreatorInfo.length,//to be adjusted dynamically******
+                          itemCount: tourInfo.length,//to be adjusted dynamically******
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: (){
-                                print(tourCreatorInfo);
-                                //BlocProvider.of<Cubits>(context).detailPage(tourCreatorInfo[1], tourInfo[1]);
+                                print(tourCreatorInfo.length);
+                                print(tourInfo.length);
+
+                                BlocProvider.of<Cubits>(context).detailPage(tourCreatorInfo[index], tourInfo[index]);
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 20, top: 15),
@@ -127,9 +144,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.black,
                                     image: DecorationImage(
-                                        //image: NetworkImage("http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com/tours"+info[1].img),
-                                        image: NetworkImage("https://dummyimage.com/216x116.png/ff4444/ffffff"),
-                                        fit: BoxFit.cover)),
+                                        image: NetworkImage(tourInfo[index].img),
+                                        //image: NetworkImage("https://dummyimage.com/216x116.png/ff4444/ffffff"),
+                                        fit: BoxFit.cover
+
+                                    )
+                                ),
                               ),
                             );
                           },
@@ -190,7 +210,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             return Container();
           }
         },
-      )
+      ),
+        bottomNavigationBar: BottomNavigationBar(
+        unselectedFontSize: 0,//to avoid the error of tapping the text
+        selectedFontSize: 0,//to avoid the error of tapping the text
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        onTap: onTap,
+        currentIndex: currentIndex,
+        selectedItemColor: Colors.black54,
+        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 0, // to get rid of the upper line border of the bar
+        items:[
+          BottomNavigationBarItem(label:"Home",icon: Icon(Icons.home)),
+          BottomNavigationBarItem(label:"Profile",icon: Icon(Icons.account_circle_outlined)),
+          BottomNavigationBarItem(label:"Contact",icon: Icon(Icons.chat_outlined)),
+          BottomNavigationBarItem(label:"Settings",icon: Icon(Icons.settings)),
+
+        ]
+    ),
+
     );
 
   }
