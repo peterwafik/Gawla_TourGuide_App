@@ -37,6 +37,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_credit_card: ^3.0.1
   bloc:
   equatable:
   flutter_svg: ^0.21.0+1
@@ -58,12 +59,13 @@ dependencies:
 #  flutter_map: ^0.14.0
 #  geoflutterfire: ^3.0.3
 
-  ola_like_country_picker: ^0.1.2
   url_launcher: ^6.0.20
   charts_flutter: ^0.12.0
   #TOOLS
   #basic_utils: ^4.2.0
   global_configuration: ^1.6.0
+  intl_phone_number_input:
+  carousel_slider:
 
   shimmer: ^2.0.0
   splashscreen: ^1.3.5

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/components/sidebar.dart';
 import 'package:gawla/pages/navPages/contact_page.dart';
 import 'package:gawla/pages/navPages/edit_profile_page.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
@@ -30,6 +31,9 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: pages[currentIndex],
+      drawer: Drawer(
+        child: MainDrawer(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         unselectedFontSize: 0,//to avoid the error of tapping the text
         selectedFontSize: 0,//to avoid the error of tapping the text

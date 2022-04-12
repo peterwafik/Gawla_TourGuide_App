@@ -1,7 +1,12 @@
+import 'dart:ffi';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gawla/components/sidebar.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/misc/colors.dart';
@@ -40,6 +45,30 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     //Controller usage: so that every time i click a button, it gets rebuild
     //so i need to refer to a context which is represented by "vsync"
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,//to remove the shadow beneath
+        leading: IconButton(
+          icon: Image.asset("assets/img/sidebar.png",width: 27,),
+          color: Colors.black,
+          onPressed: () {  },
+        ),
+        actions: [
+          UnconstrainedBox(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(right: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15)
+              ),
+              child: Image.asset("assets/img/moon.png",width: 27,),
+            ),
+          )
+        ],
+      ),
+      drawer: Drawer(
+        child: MainDrawer(),
+      ),
       body: BlocBuilder<Cubits,CubitStates>(
         builder: (context, state){
           if(state is LoadedState){
@@ -51,7 +80,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //*************The Header***********//
-                  Container(
+                  /*Container(
                     padding: const EdgeInsets.only(top: 70, left: 20),
                     child: Row(
                       children: [
@@ -66,28 +95,103 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           //to put a margin between the image and the right
                           width: 50,
                           height: 50,
-
                           decoration: BoxDecoration(
                             //since we are going to border the box
+                            image: DecorationImage(
+                                image: NetworkImage(tourInfo[1].img),
+                                fit: BoxFit.cover
+                            ),
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.grey.withOpacity(0.5),
+
                           ),
                         )
                       ],
                     ),
                   ),
+                  */
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   //**********"Tours" text********//
                   Container(
                     margin: const EdgeInsets.only(left: 20),
-                    child: AppLargeText(text: "Tours"),
+                    child: AppLargeText(text: "Welcome "+tourCreatorInfo[1].firstName +" !"),
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 5,
                   ),
-                  //****"MyTours,All Tours" row*****//
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [BoxShadow(
+                        color: Colors.grey.shade300,
+                        spreadRadius: 1,
+                        blurRadius: 7,
+                        offset: Offset(0,3),
+                      ),
+                      ],
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Container(
+                          padding: EdgeInsets.all(12),
+                            child: Image.asset("assets/img/search.png",width: 24,)
+                        ),
+                        border: InputBorder.none
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //***********Advertisement panel***********//
+                  Container(
+                    height: 210,
+                    child: ListView(
+                      children: <Widget>[
+                        CarouselSlider(
+                            items: [
+                              Container(
+                                //margin: EdgeInsets.all(5),
+                                width: double.maxFinite,
+                                height: double.maxFinite,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    image: DecorationImage(
+                                      image: AssetImage("assets/img/aswan.jpg"),
+                                      fit: BoxFit.cover
+
+                                  )
+                                ),
+                              )
+                            ],
+                            options: CarouselOptions(
+                              height: 210,
+                              aspectRatio: 16/9,
+                              viewportFraction: 0.8,
+                              initialPage: 0,
+                              enableInfiniteScroll: true,
+                              reverse: false,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 4),
+                              autoPlayAnimationDuration: Duration(milliseconds: 1000),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
+                              //onPageChanged: callbackFunction,
+                              scrollDirection: Axis.horizontal,
+                            )
+                        )
+
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  //***********"MyTours,All Tours" row********//
                   Container(
                     child: Align(
                       //wrapping TabBar with this widget to align all the left texts on one coloumn
