@@ -14,6 +14,7 @@ class Cubits extends Cubit<CubitStates> {
   final DataServices data;
   late final tourCreators;
   late final tours;
+  late final tourCreator;
 
   void getData()async {
     try {
@@ -28,5 +29,18 @@ class Cubits extends Cubit<CubitStates> {
   }
   goHome(){
     emit(LoadedState(tourCreators, tours));
+  }
+
+  profilePage(DataModel tourCreator){
+    emit(ProfileState(tourCreator));
+  }
+  goProfile(){
+    emit(ProfileState(tourCreator));
+  }
+  contactPage(DataModel tourCreator){
+    emit(ContactState(tourCreator));
+  }
+  settingsPage(DataModel tourCreator){
+    emit(SettingsState(tourCreator));
   }
 }

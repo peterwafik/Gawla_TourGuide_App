@@ -5,7 +5,6 @@ import 'package:gawla/cubit/cubit_logics.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/authPages/Signup/signup_screen.dart';
 import 'package:gawla/pages/create_tour_page.dart';
-import 'package:gawla/pages/main_page.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/pages/tour_page.dart';
 import 'package:gawla/pages/welcome_page.dart';

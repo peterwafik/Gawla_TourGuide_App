@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gawla/components/custom_bottom_nav_bar.dart';
+import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
-import 'package:gawla/misc/colors.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
 import 'package:gawla/widgets/app_button.dart';
 import 'package:gawla/widgets/app_large_text.dart';
@@ -21,18 +22,8 @@ class TourPage extends StatefulWidget {
 }
 
 class _TourPageState extends State<TourPage> {
-  List pages = [
-    HomePage(),
-    ProfilePage(),
-    ContactPage(),
-    SettingsPage()
-  ];
+
   int currentIndex = 0;
-  void onTap(int index){ // on tapping any of the 4 below icons an index passed to this function
-    setState(() { //the index get saved here
-      currentIndex = index; // in the name of this variable
-    });
-  }
   int gottenStars=3;
   int selectedIndex=-1;
   @override
@@ -156,26 +147,7 @@ class _TourPageState extends State<TourPage> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-            unselectedFontSize: 0,//to avoid the error of tapping the text
-            selectedFontSize: 0,//to avoid the error of tapping the text
-            backgroundColor: Colors.white,
-            type: BottomNavigationBarType.fixed,
-            onTap: onTap,
-            currentIndex: currentIndex,
-            selectedItemColor: Colors.black54,
-            unselectedItemColor: Colors.grey.withOpacity(0.5),
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            elevation: 0, // to get rid of the upper line border of the bar
-            items:[
-              BottomNavigationBarItem(label:"Home",icon: Icon(Icons.home)),
-              BottomNavigationBarItem(label:"Profile",icon: Icon(Icons.account_circle_outlined)),
-              BottomNavigationBarItem(label:"Contact",icon: Icon(Icons.chat_outlined)),
-              BottomNavigationBarItem(label:"Settings",icon: Icon(Icons.settings)),
-
-            ]
-        ),
+        bottomNavigationBar: CustomBottomNavBar(),
 
       );
     }

@@ -38,5 +38,29 @@ class LoadingState extends CubitStates{
   @override
   // TODO: implement props
   List<Object> get props => [tourCreator,tour];
+}
 
+class ProfileState extends CubitStates{
+  ProfileState(this.tourCreator);
+  final DataModel tourCreator;
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [tourCreator];
+}
+class ContactState extends CubitStates{
+  ContactState(this.tourCreator);
+  final DataModel tourCreator;
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [tourCreator];
+}
+class SettingsState extends CubitStates{
+  SettingsState(this.tourCreator);
+  final DataModel tourCreator;
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [tourCreator];
 }

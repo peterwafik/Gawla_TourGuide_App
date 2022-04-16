@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubits.dart';
-import 'package:gawla/misc/colors.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
 import 'package:gawla/widgets/responsive_button.dart';

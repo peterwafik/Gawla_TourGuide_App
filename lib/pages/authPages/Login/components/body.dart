@@ -7,7 +7,7 @@ import 'package:gawla/components/rounded_password_field.dart';
 import 'package:gawla/pages/authPages/Login/components/background.dart';
 import 'package:gawla/pages/authPages/Signup/signup_screen.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gawla/pages/main_page.dart';
+import 'package:gawla/pages/navPages/home_page.dart';
 
 import '../login_screen.dart';
 
@@ -51,7 +51,7 @@ class Body extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       //LoginScreen.afterScreen=HomePage();
-                      return MainPage();
+                      return HomePage();
                     },
                   ),
                 );

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:gawla/misc/colors.dart';
+import 'package:gawla/constants.dart';
 
 class ResponsiveButton extends StatelessWidget {
   bool? isResponsive;

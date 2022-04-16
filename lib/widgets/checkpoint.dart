@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:gawla/misc/colors.dart';
+import 'package:gawla/constants.dart';
 
 class Checkpoint extends StatelessWidget {
   @override

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
+import 'package:gawla/pages/navPages/contact_page.dart';
+import 'package:gawla/pages/navPages/edit_profile_page.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
+import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/pages/tour_page.dart';
 import 'package:gawla/pages/welcome_page.dart';
 
@@ -25,6 +28,15 @@ class _CubitLogicsState extends State<CubitLogics> {
           }
           if(state is DetailState){
             return TourPage();
+          }
+          if(state is ProfileState){
+            return ProfilePage();
+          }
+          if(state is ContactState){
+            return ContactPage();
+          }
+          if(state is SettingsState){
+            return SettingsPage();
           }
           if(state is LoadedState){
             return HomePage();

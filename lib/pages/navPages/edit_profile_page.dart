@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gawla/misc/colors.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
