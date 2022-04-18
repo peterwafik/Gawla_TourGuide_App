@@ -5,14 +5,11 @@ import 'package:gawla/components/custom_bottom_nav_bar.dart';
 import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
-import 'package:gawla/pages/navPages/home_page.dart';
 import 'package:gawla/widgets/app_button.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
 
-import 'navPages/contact_page.dart';
-import 'navPages/edit_profile_page.dart';
-import 'navPages/profile_page.dart';
+
 
 class TourPage extends StatefulWidget {
   const TourPage({Key? key}) : super(key: key);

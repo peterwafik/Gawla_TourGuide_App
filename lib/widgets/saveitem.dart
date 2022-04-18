@@ -13,6 +13,8 @@ class SavedItem extends StatefulWidget {
 }
 
 class _SavedItemState extends State<SavedItem> {
+  List images = ["destination1.jpg","destination2.jpg","destination3.jpg"];
+
   @override
   Widget build(BuildContext context) {
     final totalDots = 4;
@@ -46,7 +48,7 @@ class _SavedItemState extends State<SavedItem> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                              image: NetworkImage(tourInfo[1].img),
+                              image: AssetImage("assets/img/"+images[index]),
                               fit: BoxFit.cover),
                         ),
                         child: Column(

@@ -10,6 +10,7 @@ class StoryItem extends StatefulWidget {
 }
 
 class _StoryItemState extends State<StoryItem> {
+  List images = ["rank1.jpg","rank2.jpg","rank3.jpg","rank4.jpg","rank5.jpg"];
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<Cubits,CubitStates>(
@@ -33,16 +34,16 @@ class _StoryItemState extends State<StoryItem> {
                   height: 100,
                   width: 80,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: NetworkImage(tourInfo[1].img),
+                      image: AssetImage("assets/img/mountain.jpeg"),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 Positioned(
                   top: 80,
-                  right: 25,
+                  right: 18,
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -60,9 +61,10 @@ class _StoryItemState extends State<StoryItem> {
                       ],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(1.0),
+
+                      padding: const EdgeInsets.all(0.2),
                       child: CircleAvatar(
-                        radius: 15,
+                        radius: 20,
                         backgroundImage: NetworkImage(tourInfo[1].img),
                       ),
                     ),

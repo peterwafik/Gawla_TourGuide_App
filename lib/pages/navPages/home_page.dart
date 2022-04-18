@@ -8,6 +8,7 @@ import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/models/tour_model.dart';
+import 'package:gawla/pages/create_tour_page.dart';
 import 'package:gawla/pages/navPages/explore.dart';
 import 'package:gawla/pages/navPages/newsfeed.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 NewsFeed(),
                 Explore(),
                 Trips(),
+                CreateTourPage(),
               ],
             );
           }else{
@@ -139,7 +141,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
                 Spacer(),
                 InkWell(
-                  onTap: ()=> print('Add Story'),
+                  onTap: () {
+                    setState(() {
+                      navigationTapped(3);
+                    });
+                    selectItem(3);
+                    print(_page);
+                  },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: Container(

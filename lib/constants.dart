@@ -6,6 +6,9 @@ import 'dart:ui';
 
 const kPrimaryColor = Color(0xFF5A68BD);
 const kPrimaryLightColor = Color(0xFFF1F1FB);
+const colorDark= Color(0xFF5d69b3);
+const colorMedium= Color(0xFF989acd);
+const colorLight= Color(0xFFf1f1f9);
 class AppColors{
   static final Color textColor1= Color(0xFF989acd);
   static final Color textColor2 = Color(0xFF878593);

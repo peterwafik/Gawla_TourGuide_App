@@ -22,6 +22,7 @@ class _MyTripsState extends State<MyTrips> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //Tour Card
               Container(
                 height: 200,
                 width: MediaQuery.of(context).size.width - 30,
@@ -34,6 +35,7 @@ class _MyTripsState extends State<MyTrips> {
                 ),
                 child: Column(
                   children: [
+                    //the place card internal decorations created using the below 3 widgets
                     Align(
                       alignment: Alignment.topLeft,
                       child: Padding(
@@ -89,6 +91,8 @@ class _MyTripsState extends State<MyTrips> {
                       ),
                     ),
                     Spacer(),
+                    Align(alignment: Alignment.center,child: Text("15",style: const TextStyle(fontSize:50,fontWeight: FontWeight.bold,color: Colors.white))),
+                    Spacer(),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Padding(
@@ -120,23 +124,8 @@ class _MyTripsState extends State<MyTrips> {
                   ],
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
-                'Exploring Nature de la France',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Ubuntu-Regular',
-                ),
-              ),
-              Text(
-                'oct 01, 2019 - oct 21, 2019',
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Colors.grey,
-                  fontFamily: 'Ubuntu-Regular',
-                ),
-              ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
+              /*
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -195,19 +184,21 @@ class _MyTripsState extends State<MyTrips> {
                     ),
                   ),
                 ],
-              ),
+              ),*/
+              //"Tour users" text
               Padding(
                 padding: const EdgeInsets.only(top: 15.0),
                 child: Text(
-                  'Travellers',
+                  'Tour users',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 12,
+                    fontSize: 20,
                     fontFamily: 'Ubuntu-Regular',
                   ),
                 ),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 20),
+              //users circles
               Container(
                 height: 50,
                 child: ListView.builder(

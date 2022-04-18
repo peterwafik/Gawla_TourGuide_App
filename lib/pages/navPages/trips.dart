@@ -96,7 +96,7 @@ class _TripsState extends State<Trips> with SingleTickerProviderStateMixin {
                           ),
                           child: Center(
                             child: Text(
-                              'UP-COMING',
+                              'Pending',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontFamily: 'Ubuntu-Regular',

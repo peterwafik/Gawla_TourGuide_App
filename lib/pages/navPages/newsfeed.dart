@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/constants.dart';
 import 'package:gawla/widgets/appbar.dart';
 import 'package:gawla/widgets/postsitem.dart';
 import 'package:gawla/widgets/saveitem.dart';
@@ -28,9 +29,17 @@ class _NewsFeedState extends State<NewsFeed> {
                 shrinkWrap: true,
                 physics: AlwaysScrollableScrollPhysics(),
                 children: [
+                  SizedBox(height: 15.0),
+                  Text(" Top tour guides",style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.black),),
                   SizedBox(height: 10.0),
                   StoryItem(),
+                  SizedBox(height: 10.0),
+                  Text(" Top tourism destinations",style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.black),),
+                  SizedBox(height: 10.0),
                   SavedItem(),
+                  SizedBox(height: 10.0),
+                  Text(" Upcoming Events",style: const TextStyle(fontSize:20,fontWeight: FontWeight.bold,color: Colors.black),),
+                  SizedBox(height: 10.0),
                   PostItem(),
                 ],
               ),

@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +13,8 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
+  List images = ["destination1.jpg","destination2.jpg","destination3.jpg"];
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<Cubits,CubitStates>(
@@ -38,7 +39,7 @@ class _PostItemState extends State<PostItem> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 image: DecorationImage(
-                  image: NetworkImage(tourInfo[1].img),
+                  image: AssetImage("assets/img/"+images[index]),
                   fit: BoxFit.cover,
                 ),
               ),

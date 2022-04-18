@@ -19,6 +19,7 @@ class _CreateTourPageState extends State<CreateTourPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SingleChildScrollView(
         child: Container(
           width: double.maxFinite,
