@@ -1,4 +1,4 @@
-import 'package:gawla/models/data_model.dart';
+import 'package:gawla/models/user_model.dart';
 
 class CheckpointModel{
   int id;

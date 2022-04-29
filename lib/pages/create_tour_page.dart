@@ -32,7 +32,9 @@ class _CreateTourPageState extends State<CreateTourPage> {
                   top: 50,
                   child: Row(
                     children: [
-                      IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back),
+                      IconButton(onPressed: () {
+                        //to be adjusted
+                      }, icon: Icon(Icons.arrow_back),
                         color: Colors.black,
                       ),
 

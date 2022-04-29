@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gawla/pages/authPages/Signup/components/body.dart';
-import 'package:flutter_credit_card/credit_card_form.dart';
-import 'package:flutter_credit_card/credit_card_model.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gawla/constants.dart';
+import 'package:gawla/pages/authPages/components/page1.dart';
+import 'package:gawla/pages/authPages/components/page3.dart';
+import 'package:gawla/pages/authPages/components/progress.dart';
+//import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -13,64 +16,196 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  String cardNumber = '';
-  String expiryDate= '';
-  String cardHolderName = '';
-  String cvvCode= '';
-  bool isCvvFocused = false;
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   int currentStep = 0;
   //int _value =1;
-  final firstName = TextEditingController();
-  final lastName = TextEditingController();
-  final address = TextEditingController();
-  final postcode = TextEditingController();
 
+  late PFormController pformController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pformController = PFormController(3);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.white,
-        title: Text("Signup process"),
+        title: Text("Signup process",),
         centerTitle: true,
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        width: double.maxFinite,
-        height: double.maxFinite,
-        child:
-        Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(primary: Colors.deepPurpleAccent)
+      ),*/
+      body: Stack(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            width: double.maxFinite,
+            height: double.maxFinite,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [kPrimaryColor, Colors.white],
+                    begin: Alignment.topCenter,
+                    end:  Alignment.bottomCenter
+
+                )
+            ),
+
+
+
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 50),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "SIGN UP",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: kPrimaryLightColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      SvgPicture.asset(
+                        "assets/Authentication/icons/signup.svg",
+                        height: 190,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
+          DraggableScrollableSheet(
+              maxChildSize: 0.9,
+              minChildSize: 0.5,
+              initialChildSize: 0.6,
+              builder:(ctx,controller) {
+            return Container(
+              padding: EdgeInsets.symmetric(horizontal: 18,vertical: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30)
+              ),
+              child: SingleChildScrollView(
+                controller: controller,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PForm(
+                      controller: pformController,
+                        pages: [
+                          //LoginScreen(),
+                          Page1(),
+                          Text("Page 2"),
+                          CreditStep(),
+                          //HomePage(),
+                        ],
+                        title: [
+                          PTitle(title: "Personal Info"),
+                          PTitle(title: "Professional Info", ),
+                          PTitle(title: "Credit Info"),
 
-          child: Stepper(
-            type: StepperType.horizontal,
-            steps: getSteps(),
-            currentStep: currentStep,
-            onStepContinue: (){
-              final isLastStep = currentStep == getSteps().length -1;
-              if (isLastStep){
-                print('Completed');
-                //send data to server then
-              }else{
-                setState(() => currentStep +=1);
-              }
-            },
-            onStepCancel: (){
-              currentStep == 0? null :  setState(() => currentStep -=1);
-            },
-            onStepTapped: (step)=> setState(() => currentStep =step,),
+                        ]
+                    )
+                  ],
+                ),
+              ),
+            );
 
+          }
+          ),
+          Positioned(
+            bottom: 10,
+            right: 80,
+            child:TextButton(
+            onPressed: () {},
+            child: const Text(
+              'Already Have An Account?',
+            ),
+            style: TextButton.styleFrom(
+                primary: kPrimaryColor,
+                backgroundColor: kPrimaryLightColor,
+                textStyle:
+                const TextStyle(fontSize: 18,)),
+          ),
+          )
+        ]
       ),
-        ),
-    )
+/*
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ////back button
+          InkWell(
+            onTap: () {
+              pformController.prevPage();
+              setState(() {});
+            },
+            child: Visibility(
+              visible: pformController.currentPage != 0 ? true : false,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 50,
+                width: 50,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          ////front button
+          InkWell(
+            onTap: () {
+              pformController.nextPage();
+              setState(() {});
+            },
+            child: Visibility(
+              visible: pformController.currentPage == pformController.length - 1
+                  ? false
+                  : true,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 10),
+                height: 50,
+                width: 50,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+
+ */
     );
 
   }
-
+/*
   List<Step> getSteps() =>[
     Step(
       isActive: currentStep>=0,
@@ -142,7 +277,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         expiryDate: expiryDate,
                         cardHolderName: cardHolderName,
                         cvvCode: cvvCode,
-                        onCreditCardModelChange: onCreditCardModelChange,
+                        //onCreditCardModelChange: onCreditCardModelChange,
                         themeColor: Colors.blue,
                         formKey: formKey,
                         cardNumberDecoration: InputDecoration(
@@ -203,14 +338,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     )
   ];
-  void onCreditCardModelChange(CreditCardModel creditCardModel){
-    setState(() {
-      cardNumber = creditCardModel.cardNumber;
-      expiryDate = creditCardModel.expiryDate;
-      cardHolderName = creditCardModel.cardHolderName;
-      cvvCode = creditCardModel.cvvCode;
-      isCvvFocused = creditCardModel.isCvvFocused;
-    });
-  }
+*/
 }
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:gawla/models/data_model.dart';
+import 'package:gawla/models/user_model.dart';
 import 'package:gawla/models/tour_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,7 +15,7 @@ class DataServices{
       if(res.statusCode==200){//there's actual response from the server
         List<dynamic>list = json.decode(res.body);//cuz flutter doen't understand json but understands "mapping"
         //Now each list represents a block of code in between each []
-        //print(list);
+        print(list);
         return list.map((e) => DataModel.fromJson(e)).toList();
       }else{
         return <DataModel>[];
