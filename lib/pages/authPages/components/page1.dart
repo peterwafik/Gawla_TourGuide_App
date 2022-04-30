@@ -4,7 +4,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:gawla/components/validator.dart';
 import 'package:gawla/constants.dart';
 import 'package:gawla/pages/authPages/components/textField.dart';
-import 'package:gawla/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 

@@ -27,6 +27,15 @@ class Cubits extends Cubit<CubitStates> {
 
     } catch (e) {}
   }
+  void getAuthData()async {
+    try {
+      emit(LoadingState());//show loading state
+      print("entered loading state");
+      emit(LoginState());//once data loaded, trigger the loaded state with the new updated data
+      print("entered loaded state");
+
+    } catch (e) {}
+  }
   detailPage(DataModel tourCreators,TourModel tour){
     emit(DetailState(tourCreators, tour));
   }
@@ -46,4 +55,5 @@ class Cubits extends Cubit<CubitStates> {
   settingsPage(DataModel tourCreator){
     emit(SettingsState(tourCreator));
   }
+
 }

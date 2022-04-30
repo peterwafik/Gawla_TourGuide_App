@@ -48,6 +48,13 @@ class ProfileState extends CubitStates{
   // TODO: implement props
   List<Object> get props => [tourCreator];
 }
+class LoginState extends CubitStates{
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}
+
+
 class ContactState extends CubitStates{
   ContactState(this.tourCreator);
   final DataModel tourCreator;

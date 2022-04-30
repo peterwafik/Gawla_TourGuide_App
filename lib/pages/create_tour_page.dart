@@ -32,11 +32,14 @@ class _CreateTourPageState extends State<CreateTourPage> {
                   top: 50,
                   child: Row(
                     children: [
-                      IconButton(onPressed: () {
-                        //to be adjusted
-                      }, icon: Icon(Icons.arrow_back),
-                        color: Colors.black,
-                      ),
+                      IconButton(
+                          padding:EdgeInsets.zero,
+                          constraints: BoxConstraints(),
+                          icon:
+
+                          Icon(Icons.arrow_back_ios, color:kPrimaryLightColor),
+                          onPressed:()=>Navigator.of(context, rootNavigator: true).pop(context)
+                      )
 
                     ],
                   )),

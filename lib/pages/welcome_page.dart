@@ -59,7 +59,7 @@ class _welcomePageState extends State<welcomePage> {
                            width: 300,
                              child: GestureDetector(
                                onTap: (){
-                                 BlocProvider.of<Cubits>(context).getData();//holds the cubit and can access them
+                                 BlocProvider.of<Cubits>(context).getAuthData();//holds the cubit and can access them
                                },
                                child: Container(
                                    width: 100,

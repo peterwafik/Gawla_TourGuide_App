@@ -27,8 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       //supportedLocales: i18n.all,
 
-      home:
-      BlocProvider<Cubits>(//BlockProvider: injects cubits
+      home: BlocProvider<Cubits>(//BlockProvider: injects cubits
         create: (context)=>Cubits(
           data: DataServices(),
         ),//pass the class of function,create the cubit

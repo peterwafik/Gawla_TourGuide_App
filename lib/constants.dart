@@ -25,6 +25,9 @@ class AppColors{
 const String baseUrl = 'http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com';
 const String tours = '/tours';
 const String tourCreators = '/tourCreators';
+const loggedIn = "loggedin";
+const USER_NAME_ERROR = "Minimun 3 and maximum 10 charectors allowed.";
+const PASSWORD_ERROR = "Minimun 3 and maximum 10 charectors allowed.";
 
 const categoryList = [
   'New',

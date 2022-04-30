@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
+import 'package:gawla/pages/authPages/Login/login_screen.dart';
 import 'package:gawla/pages/navPages/contact_page.dart';
 import 'package:gawla/pages/navPages/edit_profile_page.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
@@ -25,6 +26,9 @@ class _CubitLogicsState extends State<CubitLogics> {
         builder: (context, state){//to check on states
           if(state is WelcomeState){
             return welcomePage();
+          }
+          if(state is LoginState){
+            return LoginScreen();
           }
           if(state is DetailState){
             return TourPage();
