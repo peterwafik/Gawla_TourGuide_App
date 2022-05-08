@@ -9,6 +9,13 @@ class MyTrips extends StatefulWidget {
 }
 
 class _MyTripsState extends State<MyTrips> {
+  List images = [
+    "user1.jpg",
+    "user2.jpg",
+    "user3.jpg",
+    "user4.jpg",
+    "user5.jpg"
+  ];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -27,7 +34,7 @@ class _MyTripsState extends State<MyTrips> {
                 height: 200,
                 width: MediaQuery.of(context).size.width - 30,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
                     image: AssetImage("assets/img/mountain.jpeg"),
                     fit: BoxFit.cover,
@@ -210,7 +217,7 @@ class _MyTripsState extends State<MyTrips> {
                       padding: const EdgeInsets.only(right: 5.0),
                       child: CircleAvatar(
                         radius: 25,
-                        backgroundImage: AssetImage("assets/img/mountain.jpeg"),//to be converted to a list of users to show all
+                        backgroundImage: AssetImage("assets/img/"+images[index]) //to be converted to a list of users to show all
                       ),
                     );
                   },

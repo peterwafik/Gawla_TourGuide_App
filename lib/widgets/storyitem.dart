@@ -10,27 +10,34 @@ class StoryItem extends StatefulWidget {
 }
 
 class _StoryItemState extends State<StoryItem> {
-  List images = ["rank1.jpg","rank2.jpg","rank3.jpg","rank4.jpg","rank5.jpg"];
+  List images = [
+    "user1.jpg",
+    "user2.jpg",
+    "user3.jpg",
+    "user4.jpg",
+    "user5.jpg"
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<Cubits,CubitStates>(
-        builder: (context, state){
-      if(state is LoadedState){
-        List<TourModel> tourInfo = state.tours;
-        var tourCreatorInfo = state.tourCreators;
+    return BlocBuilder<Cubits, CubitStates>(
+      builder: (context, state) {
+        if (state is LoadedState) {
+          List<TourModel> tourInfo = state.tours;
+          var tourCreatorInfo = state.tourCreators;
 
-        return Container(
-      height: 130,
-      child: ListView.builder(
-        itemCount: 5,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          //Map story = data[index];
-          return Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Stack(
-              children: [
-                Container(
+          return Container(
+            height: 100,
+            child: ListView.builder(
+              itemCount: 5,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                //Map story = data[index];
+                return Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Stack(
+                    children: [
+                      /*Container(
                   height: 100,
                   width: 80,
                   decoration: BoxDecoration(
@@ -40,47 +47,45 @@ class _StoryItemState extends State<StoryItem> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                Positioned(
-                  top: 80,
-                  right: 18,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.transparent,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          offset: new Offset(0.0, 0.0),
-                          blurRadius: 2.0,
-                          spreadRadius: 0.0,
-                        ),
-                      ],
-                    ),
-                    child: Padding(
+                ),*/
+                      Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.transparent,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                offset: new Offset(0.0, 0.0),
+                                blurRadius: 2.0,
+                                spreadRadius: 0.0,
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(0.2),
+                            child: CircleAvatar(
+                                radius: 40,
 
-                      padding: const EdgeInsets.all(0.2),
-                      child: CircleAvatar(
-                        radius: 20,
-                        backgroundImage: NetworkImage(tourInfo[1].img),
-                      ),
-                    ),
+                                backgroundImage:
+                                    AssetImage("assets/img/"+images[index])
+                                //NetworkImage(tourInfo[1].img),
+                                ),
+                          ),
+                        ),
+
+                    ],
                   ),
-                )
-              ],
+                );
+              },
             ),
           );
-        },
-      ),
-    );
-      }else{
-        return Container();
-
-      }
-        },
+        } else {
+          return Container();
+        }
+      },
     );
   }
 }

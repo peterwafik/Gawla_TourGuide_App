@@ -24,7 +24,7 @@ class _PostItemState extends State<PostItem> {
         var tourCreatorInfo = state.tourCreators;
 
         return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height-200,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         scrollDirection: Axis.vertical,
@@ -37,7 +37,7 @@ class _PostItemState extends State<PostItem> {
             child: Container(
               height: 200,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
                   image: AssetImage("assets/img/"+images[index]),
                   fit: BoxFit.cover,

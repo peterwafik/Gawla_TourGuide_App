@@ -55,7 +55,7 @@ class _TourPageState extends State<TourPage> {
                   child: Row(
                     children: [
                       IconButton(onPressed: () {
-                        BlocProvider.of<Cubits>(context).getAuthData();
+                        BlocProvider.of<Cubits>(context).goHome();
                       }, icon: Icon(Icons.arrow_back),
                         color: Colors.white,
                       ),
