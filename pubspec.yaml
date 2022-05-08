@@ -45,6 +45,7 @@ dependencies:
   flutter_bloc: ^8.0.1
 
   getwidget: ^2.0.5
+  google_maps_flutter:
 
 #  geolocator: ^8.2.0
 #  location: ^4.3.0

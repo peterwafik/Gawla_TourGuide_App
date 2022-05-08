@@ -110,14 +110,6 @@ class _CreditStepState extends State<CreditStep> {
               TextButton(
 
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return HomePage();
-                      },
-                    ),
-                  );
                 },
                 child: const Text(
                   'Submit',

@@ -71,3 +71,18 @@ class SettingsState extends CubitStates{
   // TODO: implement props
   List<Object> get props => [tourCreator];
 }
+class CreateTourState extends CubitStates{
+  CreateTourState();
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}
+class CheckpointState extends CubitStates{
+  CheckpointState(this.tourCreator);
+  final DataModel tourCreator;
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [tourCreator];
+}

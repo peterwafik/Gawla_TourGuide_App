@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:gawla/constants.dart';
+import 'package:gawla/pages/create_checkpoint_page.dart';
 
 class Checkpoint extends StatelessWidget {
   @override
@@ -34,7 +35,12 @@ class _SOFState extends State<SOF> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CheckpointPage()));
+            },
             color: AppColors.buttonBackground,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10)),

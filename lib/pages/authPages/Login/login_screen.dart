@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
           children: [
             Container(
@@ -118,70 +119,94 @@ class _LoginScreenState extends State<LoginScreen> {
                 minChildSize: 0.6,
                 initialChildSize: 0.6,
                 builder:(ctx,controller) {
-                  return Container(
-                    padding: EdgeInsets.symmetric(horizontal: 18,vertical: 20),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: Column(
-                      children: [
+                  return SingleChildScrollView(
+                    child: Container(
+                      height: 520,//dummyyyyyyyyyy and ineffective
+                      padding: EdgeInsets.symmetric(horizontal: 18,vertical: 20),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30)
+                      ),
+                      child: Column(
+                        children: [
 
-                        SizedBox(height:20),
-                        TextInput(textString:"Email", textController:emailController, hint:"Email"),
-                        SizedBox(height: 40),
-                        TextInput(textString:"Password", textController:textController, hint:"Password", obscureText: true,),
-                        SizedBox(height: 50),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            //TextWidget(text:"Sign in", fontSize:22, isUnderLine:false),
-                            Spacer(),
-                            GestureDetector(
-                                onTap: (){
-                                  BlocProvider.of<Cubits>(context).getData();
+                          SizedBox(height:20),
+                          TextFormField(
 
-                                  //_login();
-                                },
-                                child:
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    shape:BoxShape.circle,
-                                    color:kPrimaryColor,
-                                  ),
-                                  child: Icon(Icons.arrow_forward, color:Colors.white, size:30),
+                            //validator: validateEmail,
+                            //onSaved: (value) => _username = value,
+                            decoration: InputDecoration(
+                                prefixIcon:Icon(Icons.email),// 3ashan attribute el prefix elli 3amalnah fo2 yesama3
+                                hintText: "E-mail",
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none
                                 )
-                            )
-                          ],
-                        ),
-                        SizedBox(height:50),
-
-                        Positioned(
-                          bottom: 10,
-                          right: 80,
-
-                            child:TextButton(
-                              onPressed: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context)=> const SignUpScreen())
-                                );
-                              },
-                              child: const Text(
-                                "Don't Have An Account?",
-                              ),
-                              style: TextButton.styleFrom(
-                                  primary: kPrimaryColor,
-                                  backgroundColor: kPrimaryLightColor,
-                                  textStyle:
-                                  const TextStyle(fontSize: 18,)),
                             ),
+                          ),
+                          SizedBox(height: 20,),
+                          TextFormField(
+                            autofocus: false,
+                            obscureText: true,
+                            //validator: (value)=>value!.isEmpty?'Please enter password':null,
+                            // onSaved: (value) => _password = value,
+                            decoration: InputDecoration(
+                                prefixIcon:Icon(Icons.lock),// 3ashan attribute el prefix elli 3amalnah fo2 yesama3
+                                hintText: "Password",
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none
+                                )
+                            ),
+                          ),
+                          SizedBox(height: 50),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              //TextWidget(text:"Sign in", fontSize:22, isUnderLine:false),
+                              Spacer(),
+                              GestureDetector(
+                                  onTap: (){
+                                    BlocProvider.of<Cubits>(context).getData();
 
-                        ),
+                                    //_login();
+                                  },
+                                  child:
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      shape:BoxShape.circle,
+                                      color:kPrimaryColor,
+                                    ),
+                                    child: Icon(Icons.arrow_forward, color:Colors.white, size:30),
+                                  )
+                              )
+                            ],
+                          ),
+                          SizedBox(height:50),
 
-                      ],
+                          Align(
+                            alignment: Alignment.center,
+                              child:TextButton(
+                                onPressed: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context)=> const SignUpScreen())
+                                  );
+                                },
+                                child: const Text(
+                                  "Don't Have An Account?",
+                                ),
+                                style: TextButton.styleFrom(
+                                    primary: kPrimaryColor,
+                                    backgroundColor: kPrimaryLightColor,
+                                    textStyle:
+                                    const TextStyle(fontSize: 18,)),
+                              ),
 
+                          ),
+
+                        ],
+
+                      ),
                     ),
                   );
 

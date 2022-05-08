@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/authPages/Login/login_screen.dart';
+import 'package:gawla/pages/create_checkpoint_page.dart';
+import 'package:gawla/pages/create_tour_page.dart';
 import 'package:gawla/pages/navPages/contact_page.dart';
 import 'package:gawla/pages/navPages/edit_profile_page.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
@@ -41,6 +43,11 @@ class _CubitLogicsState extends State<CubitLogics> {
           }
           if(state is SettingsState){
             return SettingsPage();
+          }
+          if(state is CheckpointState){
+            return CheckpointPage();
+          } if(state is CreateTourState){
+            return CreateTourPage();
           }
           if(state is LoadedState){
             return HomePage();

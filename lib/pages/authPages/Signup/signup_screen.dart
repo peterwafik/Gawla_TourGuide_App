@@ -92,7 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               initialChildSize: 0.6,
               builder:(ctx,controller) {
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 18,vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 13,vertical: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30)
