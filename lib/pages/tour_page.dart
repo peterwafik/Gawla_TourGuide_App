@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gawla/components/custom_bottom_nav_bar.dart';
 import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
@@ -144,7 +143,6 @@ class _TourPageState extends State<TourPage> {
             ],
           ),
         ),
-        bottomNavigationBar: CustomBottomNavBar(),
 
       );
     }

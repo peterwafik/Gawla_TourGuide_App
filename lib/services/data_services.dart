@@ -8,7 +8,8 @@ class DataServices{
   //the below baseUrl is of "laravel backend"
   //from "postman's Uri", beside Dropdown menu Get/Post
   String baseUrl = "http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com";//depends on kind of back-end used
-  Future<List<DataModel>>getTourguideInfo() async {
+  Future<List<DataModel>>getTourguideInfo() async
+  {
     var apiUrl = '/tourCreators';//combined-Uri
     http.Response res = await http.get(Uri.parse(baseUrl+apiUrl));
     try{

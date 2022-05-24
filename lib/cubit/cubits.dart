@@ -6,44 +6,32 @@ import 'package:gawla/services/data_services.dart';
 import 'cubit_states.dart';
 
 class Cubits extends Cubit<CubitStates> {
-  //what's written between "<>" is what will be listened to by the cubit
-  Cubits({required this.data}) : super(InitialState()) {
-    emit(WelcomeState()); //once initial state is done, emit new state
-  } //Cubits parameters declaration are those of the InitialState()
-
   final DataServices data;
   late final tourCreators;
   late final tours;
   late final tourCreator;
-
+  //what's written between "<>" is what will be listened to by the cubit
+  Cubits({required this.data}) : super(InitialState()) {
+    emit(WelcomeState()); //once initial state is done, emit new state
+  } //Cubits parameters declaration are those of the InitialState()
   void getData()async {
     try {
       emit(LoadingState());//show loading state
-      print("entered loading state");
       tourCreators = await data.getTourguideInfo();//during this try to load data
       tours = await data.getTourInfo();
       emit(LoadedState(tourCreators,tours));//once data loaded, trigger the loaded state with the new updated data
-      print("entered loaded state");
-
     } catch (e) {}
   }
   void getAuthData()async {
     try {
       emit(LoadingState());//show loading state
-      print("entered loading state");
       emit(LoginState());//once data loaded, trigger the loaded state with the new updated data
-      print("entered loaded state");
-
     } catch (e) {}
   }
   void goCreateTour()async {
     try {
       emit(LoadingState());//show loading state
-      print("entered loading state");
-      //tourCreator = await data.getTourguideInfo();//during this try to load data
       emit(CreateTourState());//once data loaded, trigger the loaded state with the new updated data
-      print("entered Tour creator state");
-
     } catch (e) {}
   }
 

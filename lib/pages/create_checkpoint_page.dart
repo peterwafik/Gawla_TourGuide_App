@@ -7,7 +7,6 @@ import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 class CheckpointPage extends StatefulWidget {
   CheckpointPage({Key? key}) : super(key: key);
 

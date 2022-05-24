@@ -14,6 +14,8 @@ import 'package:gawla/pages/navPages/newsfeed.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/pages/navPages/trips.dart';
 
+import 'contact_page.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,6 +25,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+
   late PageController _pageController;
   int _page = 0;
   int selectedItem = 0;
@@ -53,6 +56,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 NewsFeed(),
                 Explore(),
                 Trips(),
+                ContactPage(),
                 CreateTourPage(),
               ],
             );
@@ -139,13 +143,37 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                Spacer(),
+                SizedBox(width: 10),
                 InkWell(
                   onTap: () {
                     setState(() {
                       navigationTapped(3);
                     });
                     selectItem(3);
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: 3 == selectedItem ? kPrimaryColor : Colors.grey[300],
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Feather.smartphone,
+                        color: 3 == selectedItem ? Colors.white : Colors.black,
+                        size: 15,
+                      ),
+                    ),
+                  ),
+                ),
+                Spacer(),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      navigationTapped(4);
+                    });
+                    selectItem(4);
                     print(_page);
                   },
                   child: Padding(
@@ -167,6 +195,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+
               ],
             ),
           ),

@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.white
       ),
       //supportedLocales: i18n.all,
-
       home: BlocProvider<Cubits>(//BlockProvider: injects cubits
         create: (context)=>Cubits(
           data: DataServices(),

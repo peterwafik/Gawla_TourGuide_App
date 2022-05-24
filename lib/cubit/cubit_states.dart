@@ -8,7 +8,6 @@ class InitialState extends CubitStates{//every cubit app should have one initial
   @override
   // TODO: implement props
   List<Object> get props => [];
-
 }
 class WelcomeState extends CubitStates{
   @override
@@ -30,7 +29,8 @@ class LoadingState extends CubitStates{
   // TODO: implement props
   List<Object> get props => [tourCreators,tours];
 
-}class DetailState extends CubitStates{
+}
+class DetailState extends CubitStates{
   DetailState(this.tourCreator,this.tour);
   final DataModel tourCreator;
   final TourModel tour;
