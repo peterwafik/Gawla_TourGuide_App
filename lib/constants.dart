@@ -36,3 +36,10 @@ const categoryList = [
   'All tours',
 ];
 
+class Config {
+  static final String apiKey = '85u9gh4kpf2c';
+
+  static final String tokenPeter =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicGV0ZXIifQ.NSEcti19pLUV6LI6XIlVO0X6abty1YO1HQ_ynX_jHrA';
+  static final String idPeter = 'peter';
+}

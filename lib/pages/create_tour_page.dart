@@ -9,6 +9,7 @@ import 'package:gawla/pages/navPages/newsfeed.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
 import 'package:gawla/widgets/checkpoint.dart';
+import 'package:gawla/services/data_services.dart';
 
 class CreateTourPage extends StatefulWidget {
   const CreateTourPage({Key? key}) : super(key: key);
@@ -41,6 +42,8 @@ class _CreateTourPageState extends State<CreateTourPage> {
       print('Switch Button is OFF');
     }
   }
+
+  late final DataServices data;
 
   @override
   Widget build(BuildContext context) {
@@ -176,8 +179,8 @@ class _CreateTourPageState extends State<CreateTourPage> {
                         AppText(text: "Route", color: Colors.black),
                         Spacer(),
                         Container(
-                          width: 130,
-                          height: 220,
+                          width: 310,
+                          height: 150,
                           child: Checkpoint(),
                         )
                       ]),
@@ -205,6 +208,31 @@ class _CreateTourPageState extends State<CreateTourPage> {
                           ),
                         ),
                       ]),
+
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Row(children: [
+                        AppText(
+                            text: "Price",
+                            color: Colors.black),
+                        Spacer(),
+                        Container(
+                          width: 70,
+                          child: TextField(
+                            //textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                hintText: '0',
+                                contentPadding: const EdgeInsets.all(15),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15))),
+                            onChanged: (value) {
+                              // do something
+                            },
+                          ),
+                        ),
+                      ]),
+
                       SizedBox(
                         height: 50,
                       ),
@@ -287,6 +315,7 @@ class _CreateTourPageState extends State<CreateTourPage> {
                           child: ElevatedButton(
                             child: Text("Submit"),
                             onPressed: () {
+                              BlocProvider.of<Cubits>(context).postTourData();
                               //NewsFeed();
                             },
                           )),

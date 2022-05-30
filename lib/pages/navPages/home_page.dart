@@ -9,12 +9,11 @@ import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/models/tour_model.dart';
 import 'package:gawla/pages/create_tour_page.dart';
+import 'package:gawla/pages/navPages/contact_page.dart';
 import 'package:gawla/pages/navPages/explore.dart';
 import 'package:gawla/pages/navPages/newsfeed.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/pages/navPages/trips.dart';
-
-import 'contact_page.dart';
 
 
 class HomePage extends StatefulWidget {

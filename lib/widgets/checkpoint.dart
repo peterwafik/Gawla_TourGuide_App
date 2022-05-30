@@ -69,30 +69,36 @@ class _SOFState extends State<SOF> {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            width: 130,
-            height: 140,
-            child: ListView.builder(
-              itemCount: cards.length,
-              itemBuilder: (BuildContext context, int index) {
-                return cards[index];
-              },
-            ),
+    return  Row(
+      children: [
+        Spacer(),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: RaisedButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)),
+            child: Text('Add new'),
+            onPressed: () => setState(() => cards.add(createCard())),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: Text('Add new'),
-              onPressed: () => setState(() => cards.add(createCard())),
-            ),
-          )
-        ],
-      );
+        ),
+
+        Column(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.topRight,
+                width: 120,
+                height: 140,
+                child: ListView.builder(
+                  itemCount: cards.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return cards[index];
+                  },
+                ),
+              ),
+            ],
+          ),
+      ],
+    );
       //floatingActionButton:
       //FloatingActionButton(child: Icon(Icons.done), onPressed: _onDone),
 

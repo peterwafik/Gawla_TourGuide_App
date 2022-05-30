@@ -8,8 +8,7 @@ class DataServices{
   //the below baseUrl is of "laravel backend"
   //from "postman's Uri", beside Dropdown menu Get/Post
   String baseUrl = "http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com";//depends on kind of back-end used
-  Future<List<DataModel>>getTourguideInfo() async
-  {
+  Future<List<DataModel>>getTourguideInfo() async{
     var apiUrl = '/tourCreators';//combined-Uri
     http.Response res = await http.get(Uri.parse(baseUrl+apiUrl));
     try{
@@ -46,6 +45,37 @@ class DataServices{
     }catch(e){
       print(e);
       return <TourModel>[];
+    }
+  }
+  Future<dynamic> postTourInfo(
+      String name,
+      String category,
+      String img,
+      int price,
+      String description,
+      String location,
+      int maxParticipants,
+      ) async{
+    http.Response response;
+    try {
+       response = await http.post(
+            "http://appgawla-env.eba-bxx4seec.us-east-1.elasticbeanstalk.com/tours",
+         headers: {
+           'Content-Type': 'application/json; charset=UTF-8',
+         },
+        body: jsonEncode(<String, dynamic>{
+          "name": name.toString(),
+          "category": category.toString(),
+          "cover_photo": img.toString(),
+          "cost": price,
+          "description": description.toString(),
+          "location": location.toString(),
+          "max_participants": maxParticipants,
+        }),
+      );
+    }
+    catch(e){
+      print(e);
     }
   }
 

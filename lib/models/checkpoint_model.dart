@@ -2,20 +2,22 @@ import 'package:gawla/models/user_model.dart';
 
 class CheckpointModel{
   int id;
-  dynamic tourModel;
+  int tourId;
+  int time;
   String name;
   String category;
   String img;
-  int time;
+  int detailedLocation;
   String description;
   String location;
   CheckpointModel({
     required this.id,
-    required this.tourModel,
+    required this.tourId,
+    required this.time,
     required this.name,
     required this.category,
     required this.img,
-    required this.time,
+    required this.detailedLocation,
     required this.description,
     required this.location,
 
@@ -25,11 +27,12 @@ class CheckpointModel{
     //send info to variable "json"
     return CheckpointModel(
       id: json['id'],
-      tourModel: json['tour'],
+      tourId: json['tourId'],
+      time: json['time'],
       name: json["name"],
       category: json["category"],
-      img: json["cover_photo"],
-      time: json["cost"],
+      img: json["photo"],
+      detailedLocation: json["cost"],
       description: json["description"],
       location: json["location"],
 
