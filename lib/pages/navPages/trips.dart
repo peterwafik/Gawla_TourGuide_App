@@ -23,7 +23,7 @@ class _TripsState extends State<Trips> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(context),
+      //appBar: header(context),
       body: Container(
         height: MediaQuery.of(context).size.height,
         child: Column(

@@ -11,7 +11,7 @@ class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(context),
+      //appBar: header(context),
       body: Container(
         height: MediaQuery.of(context).size.height,
         child: Column(

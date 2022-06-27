@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:gawla/constants.dart';
+import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
 
 class CreditStep extends StatefulWidget {
@@ -110,6 +112,8 @@ class _CreditStepState extends State<CreditStep> {
               TextButton(
 
                 onPressed: () {
+                  BlocProvider.of<Cubits>(context).getData();
+
                 },
                 child: const Text(
                   'Submit',

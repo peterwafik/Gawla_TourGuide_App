@@ -15,6 +15,19 @@ class WelcomeState extends CubitStates{
   List<Object> get props => [];
 
 }
+class LoginState extends CubitStates{
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}
+
+class SignUpState extends CubitStates{
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+
+}
+
 class LoadingState extends CubitStates{
   @override
   // TODO: implement props
@@ -48,21 +61,14 @@ class ProfileState extends CubitStates{
   // TODO: implement props
   List<Object> get props => [tourCreator];
 }
-class LoginState extends CubitStates{
+
+
+class ContactState extends CubitStates{
   @override
   // TODO: implement props
   List<Object> get props => [];
 }
 
-
-class ContactState extends CubitStates{
-  ContactState(this.tourCreator);
-  final DataModel tourCreator;
-
-  @override
-  // TODO: implement props
-  List<Object> get props => [tourCreator];
-}
 class SettingsState extends CubitStates{
   SettingsState(this.tourCreator);
   final DataModel tourCreator;

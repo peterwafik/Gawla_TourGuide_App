@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_states.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/authPages/Login/login_screen.dart';
+import 'package:gawla/pages/authPages/Signup/signup_screen.dart';
 import 'package:gawla/pages/create_checkpoint_page.dart';
 import 'package:gawla/pages/create_tour_page.dart';
 import 'package:gawla/pages/navPages/contact_page.dart';
@@ -32,6 +33,9 @@ class _CubitLogicsState extends State<CubitLogics> {
           if(state is LoginState){
             return LoginScreen();
           }
+          if(state is SignUpState){
+            return SignUpScreen();
+          }
           if(state is DetailState){
             return TourPage();
           }
@@ -39,6 +43,7 @@ class _CubitLogicsState extends State<CubitLogics> {
             return ProfilePage();
           }
           if(state is ContactState){
+            startChat(context);
             return ContactPage();
           }
           if(state is SettingsState){

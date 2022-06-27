@@ -6,7 +6,6 @@ import 'package:gawla/constants.dart';
 import 'package:gawla/pages/authPages/components/textField.dart';
 import 'package:provider/provider.dart';
 
-
 class Page1 extends StatefulWidget {
   const Page1({Key? key}) : super(key: key);
 
@@ -23,49 +22,6 @@ class _Page1State extends State<Page1> {
 
   @override
   Widget build(BuildContext context) {
-    /*
-
-
-    AuthProvider auth = Provider.of<AuthProvider>(context);
-
-    var loading  = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        CircularProgressIndicator(),
-        Text(" Registering ... Please wait")
-      ],
-    );
-
-    var doRegister = (){
-      print('on doRegister');
-
-      final form = formKey.currentState;
-      if(form!.validate()){
-
-        form.save();
-
-        auth.loggedInStatus = Status.Authenticating;
-        auth.notify();
-
-        Future.delayed(loginTime).then((_) {
-          Navigator.pushReplacementNamed(context, '/login');
-          auth.loggedInStatus = Status.LoggedIn;
-          auth.notify();
-        });
-
-
-      }else{
-        print("invalid form");
-        /*Flushbar(
-          title: 'Invalid form',
-          message: 'Please complete the form properly',
-          duration: Duration(seconds: 10),
-        ).show(context);*/
-      }
-
-    };
-
-    */
     return Container(
       padding: EdgeInsets.only(top: 10),
       child: Form(

@@ -38,6 +38,23 @@ class Cubits extends Cubit<CubitStates> {
       print(e);
     }
   }
+  void postCheckpointData()async{
+    try {
+      data.postCheckpointInfo(
+        //1001,
+        "Peter Wafik",
+        "cultural",
+        "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/02/Tom-Holland-unico-Peter-Parker-Spider-Man.jpg?fit=1280%2C720&quality=80&ssl=1",
+        2000,
+        "This is just a test to see whether the posting process would succeed or not",
+        "Cairo",
+        30,
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void getAuthData()async {
     try {
       emit(LoadingState());//show loading state
@@ -63,12 +80,21 @@ class Cubits extends Cubit<CubitStates> {
   goProfile(){
     emit(ProfileState(tourCreator));
   }
-  contactPage(DataModel tourCreator){
-    emit(ContactState(tourCreator));
+  goContact(){
+    emit(ContactState());
   }
+
+  goLogin(){
+    emit(LoginState());
+  }
+  goSignup(){
+    emit(SignUpState());
+  }
+
   settingsPage(DataModel tourCreator){
     emit(SettingsState(tourCreator));
   }
+
 
 
 }

@@ -1,8 +1,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/pages/authPages/Login/login_screen.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
+
+import '../cubit/cubits.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -88,11 +91,8 @@ class MainDrawer extends StatelessWidget {
 
       ListTile(
         onTap: () {
-           Navigator.push(context,MaterialPageRoute(builder: (context) {
-             return LoginScreen();
-           },
-    ),
-    );
+          BlocProvider.of<Cubits>(context).getAuthData();
+
     },
         leading: Icon(
           Icons.assignment_return_outlined,

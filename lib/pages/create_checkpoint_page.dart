@@ -7,6 +7,8 @@ import 'package:gawla/constants.dart';
 import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
+
+import '../cubit/cubit_states.dart';
 class CheckpointPage extends StatefulWidget {
   CheckpointPage({Key? key}) : super(key: key);
 
@@ -49,85 +51,85 @@ class _CheckpointPageState extends State<CheckpointPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.maxFinite,
-        height: double.maxFinite,
-        padding: const EdgeInsets.only(left: 20,right: 20),
-        child: Column(
-            children: [
-              SizedBox(height: 40,),
+      body: BlocBuilder<Cubits, CubitStates>(
+        builder: (context, state) {
+          return Container(
+            width: double.maxFinite,
+            height: double.maxFinite,
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(children: [
+              SizedBox(
+                height: 40,
+              ),
               //******* Back navigation arrow *********//
               Row(
                 children: [
                   IconButton(
-                    alignment: Alignment.centerLeft,
-                              padding:EdgeInsets.zero,
-                              constraints: BoxConstraints(),
-                              icon:
-                              Icon(Icons.arrow_back_ios, color:Colors.black),
-                              onPressed:() {
-                                Navigator.of(context).pop(context);
-                               // BlocProvider.of<Cubits>(context).goHome();
-                                //Navigator.of(context, rootNavigator: true).pushNamed('/home');
-
-
-                              }
-
-                          ),
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints(),
+                      icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                      onPressed: () {
+                        Navigator.of(context).pop(context);
+                        // BlocProvider.of<Cubits>(context).goHome();
+                        //Navigator.of(context, rootNavigator: true).pushNamed('/home');
+                      }),
                 ],
               ),
 
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
 
               Row(
                 children: [
                   Align(
                     alignment: Alignment.topLeft,
-                    child: Text(
-                    "Checkpoint info",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 35,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Ubuntu',
-                        letterSpacing: 1.2)),
+                    child: Text("Checkpoint info",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 35,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Ubuntu',
+                            letterSpacing: 1.2)),
                   ),
                 ],
               ),
 
               SizedBox(height: 15),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,//TO PUSH BOTH SIDES TO THE EDGE
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //TO PUSH BOTH SIDES TO THE EDGE
                   children: [
-                    AppText(text: "Category",color: Colors.black),
-                    Spacer(),//Separator
+                    AppText(text: "Category", color: Colors.black),
+                    Spacer(), //Separator
                     Container(
                       //width: 60,
-                      padding: EdgeInsets.symmetric(horizontal: 12,vertical: 0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: AppColors.buttonBackground
-                        //border: Border.all(color: Colors.deepPurpleAccent)
-                      ),
+                          //border: Border.all(color: Colors.deepPurpleAccent)
+                          ),
                       child: DropdownButtonHideUnderline(
-                        child: DropdownButton(items:categories.map((String categories) {
-                          return DropdownMenuItem(
-                            value: categories,
-                            child: Text(categories),
-                          );
-                        }).toList(), onChanged: (String? newValue) {
-                          setState(() {
-                          });}
-                        ),
+                        child: DropdownButton(
+                            items: categories.map((String categories) {
+                              return DropdownMenuItem(
+                                value: categories,
+                                child: Text(categories),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {});
+                            }),
                       ),
-                    )//Drop down list
-                  ]
-              ),
+                    ) //Drop down list
+                  ]),
               SizedBox(height: 15),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,//TO PUSH BOTH SIDES TO THE EDGE
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //TO PUSH BOTH SIDES TO THE EDGE
                   children: [
-                    AppText(text: "Name",color: Colors.black),
+                    AppText(text: "Name", color: Colors.black),
                     Spacer(),
                     Container(
                       width: 130,
@@ -143,60 +145,99 @@ class _CheckpointPageState extends State<CheckpointPage> {
                         },
                       ),
                     ),
-                  ]
-              ),
+                  ]),
               SizedBox(height: 15),
 
-              Row(
-                  children: [
-                    Text("Cover Photo",
-                      style: TextStyle(color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Ubuntu',
-                          letterSpacing: 1.2),
-
-                    ),
-                    Spacer(),
-                    RaisedButton(onPressed:() {},
-                      color: Colors.grey[300],
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      child: Text('+', style: TextStyle(fontSize: 18 , color: Colors.grey)),
-
-                    ),  ],
-                ),
-
-              SizedBox(height: 15),
-
-              Row(
-            children: [
-              Text("Timed",
-                      style: TextStyle(color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Ubuntu',
-                          letterSpacing: 1.2),
-
-                    ),
-              Spacer(),
               Row(
                 children: [
-                  SizedBox(width: 50,),
-                  Switch(
-                    onChanged: toggleSwitch,
-                    value: isSwitched,
-                    activeColor: kPrimaryColor,
-                    activeTrackColor: kPrimaryLightColor,
-                    inactiveThumbColor: Colors.black,
-                    inactiveTrackColor: Colors.grey,
+                  Text(
+                    "Cover Photo",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Ubuntu',
+                        letterSpacing: 1.2),
                   ),
-                  SizedBox(width: 30,),
+                  Spacer(),
+                  RaisedButton(
+                    onPressed: () {},
+                    color: Colors.grey[300],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text('+',
+                        style: TextStyle(fontSize: 18, color: Colors.grey)),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 15),
+
+              Row(
+                children: [
+                  Text(
+                    "Timed",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Ubuntu',
+                        letterSpacing: 1.2),
+                  ),
+                  Spacer(),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                      ),
+                      Switch(
+                        onChanged: toggleSwitch,
+                        value: isSwitched,
+                        activeColor: kPrimaryColor,
+                        activeTrackColor: kPrimaryLightColor,
+                        inactiveThumbColor: Colors.black,
+                        inactiveTrackColor: Colors.grey,
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Container(
+                        width: 130,
+                        child: TextField(
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                              hintText: '30:00',
+                              contentPadding: const EdgeInsets.all(15),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15))),
+                          onChanged: (value) {
+                            // do something
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 15),
+              Row(
+                children: [
+                  Text(
+                    "Location",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Ubuntu',
+                        letterSpacing: 1.2),
+                  ),
+                  Spacer(),
                   Container(
                     width: 130,
                     child: TextField(
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
-                          hintText: '30:00',
+                          hintText: 'Latitude and longitude',
                           contentPadding: const EdgeInsets.all(15),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
@@ -206,39 +247,8 @@ class _CheckpointPageState extends State<CheckpointPage> {
                     ),
                   ),
                 ],
-              )  ,
-            ],
-          ),
-              SizedBox(height: 15),
-          Row(
-            children: [
-              Text("Location",
-                        style: TextStyle(color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Ubuntu',
-                            letterSpacing: 1.2),
-
-                      ),
-              Spacer(),
-              Container(
-                width: 130,
-                child: TextField(
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                      hintText: 'Latitude and longitude',
-                      contentPadding: const EdgeInsets.all(15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15))),
-                  onChanged: (value) {
-                    // do something
-                  },
-                ),
               ),
-
-            ],
-          ),
-          /*
+              /*
           Column(
             children: [
               Container(
@@ -262,54 +272,18 @@ class _CheckpointPageState extends State<CheckpointPage> {
 
           ),
           */
-          SizedBox(height: 15),
+              SizedBox(height: 15),
 
-          Row(
-            children: [
-              Text("Description",
-                style: TextStyle(color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Ubuntu',
-                    letterSpacing: 1.2),
-
-              ),
-              /*Container(
-                height: 25,
-                width: 45,
-                child: DropdownButton(items:items.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(), onChanged: (String? newValue) {
-                  setState(() {
-                  });}
-                ),
-              ),*/
-              SizedBox(width: 20,),
-              Container(
-                width: 40,
-                child: RaisedButton(onPressed:() {
-                  openDescriptionDialog();
-                },
-                  color: Colors.grey[300],
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80)),
-                  child: Text('+', style: TextStyle(fontSize: 18 , color: Colors.grey)),
-
-                ),
-              ),],
-          ),
-          SizedBox(height: 20,),
               Row(
                 children: [
-                  Text("Question",
-                    style: TextStyle(color: Colors.black,
+                  Text(
+                    "Description",
+                    style: TextStyle(
+                        color: Colors.black,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Ubuntu',
                         letterSpacing: 1.2),
-
                   ),
                   /*Container(
                 height: 25,
@@ -324,96 +298,160 @@ class _CheckpointPageState extends State<CheckpointPage> {
                   });}
                 ),
               ),*/
-                  SizedBox(width: 20,),
-                  Container(
-                    width: 40,
-                    child: RaisedButton(onPressed:() {
-                      openQuestionDialog();
-
-                    },
-                      color: Colors.grey[300],
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80)),
-                      child: Text('+', style: TextStyle(fontSize: 18 , color: Colors.grey)),
-
-                    ),
-                  ),],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                children: [
-                  Text("General knowledge",
-                    style: TextStyle(color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Ubuntu',
-                        letterSpacing: 1.2),
-
+                  SizedBox(
+                    width: 20,
                   ),
-                  /*Container(
-                height: 25,
-                width: 45,
-                child: DropdownButton(items:items.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(), onChanged: (String? newValue) {
-                  setState(() {
-                  });}
-                ),
-              ),*/
-                  SizedBox(width: 20,),
                   Container(
                     width: 40,
-                    child: RaisedButton(onPressed:() {
-                      openGKDialog();
-                    },
+                    child: RaisedButton(
+                      onPressed: () {
+                        openDescriptionDialog();
+                      },
                       color: Colors.grey[300],
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80)),
-                      child: Text('+', style: TextStyle(fontSize: 18 , color: Colors.grey)),
-
-                    ),
-                  ),],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                children: [
-                  Text("Clue",
-                    style: TextStyle(color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Ubuntu',
-                        letterSpacing: 1.2),
-
-                  ),
-                  /*Container(
-                height: 25,
-                width: 45,
-                child: DropdownButton(items:items.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(), onChanged: (String? newValue) {
-                  setState(() {
-                  });}
-                ),
-              ),*/
-                  SizedBox(width: 20,),
-                  Container(
-                    width: 40,
-                    child: RaisedButton(onPressed:() {
-                      openClueDialog();
-                    },
-                      color: Colors.grey[300],
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80)),
-                      child: Text('+', style: TextStyle(fontSize: 18 , color: Colors.grey)),
-
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(80)),
+                      child: Text('+',
+                          style: TextStyle(fontSize: 18, color: Colors.grey)),
                     ),
                   ),
                 ],
               ),
-          /*Align(
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "Question",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Ubuntu',
+                        letterSpacing: 1.2),
+                  ),
+                  /*Container(
+                height: 25,
+                width: 45,
+                child: DropdownButton(items:items.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(), onChanged: (String? newValue) {
+                  setState(() {
+                  });}
+                ),
+              ),*/
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: 40,
+                    child: RaisedButton(
+                      onPressed: () {
+                        openQuestionDialog();
+                      },
+                      color: Colors.grey[300],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(80)),
+                      child: Text('+',
+                          style: TextStyle(fontSize: 18, color: Colors.grey)),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "General knowledge",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Ubuntu',
+                        letterSpacing: 1.2),
+                  ),
+                  /*Container(
+                height: 25,
+                width: 45,
+                child: DropdownButton(items:items.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(), onChanged: (String? newValue) {
+                  setState(() {
+                  });}
+                ),
+              ),*/
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: 40,
+                    child: RaisedButton(
+                      onPressed: () {
+                        openGKDialog();
+                      },
+                      color: Colors.grey[300],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(80)),
+                      child: Text('+',
+                          style: TextStyle(fontSize: 18, color: Colors.grey)),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "Clue",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Ubuntu',
+                        letterSpacing: 1.2),
+                  ),
+                  /*Container(
+                height: 25,
+                width: 45,
+                child: DropdownButton(items:items.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(), onChanged: (String? newValue) {
+                  setState(() {
+                  });}
+                ),
+              ),*/
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: 40,
+                    child: RaisedButton(
+                      onPressed: () {
+                        openClueDialog();
+                      },
+                      color: Colors.grey[300],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(80)),
+                      child: Text('+',
+                          style: TextStyle(fontSize: 18, color: Colors.grey)),
+                    ),
+                  ),
+                ],
+              ),
+              /*Align(
             widthFactor: MediaQuery.of(context).size.width,
             child: Row(
               children: [
@@ -457,29 +495,26 @@ class _CheckpointPageState extends State<CheckpointPage> {
               ],
             ),
           ),*/
-          SizedBox(height: 15,),
-          RaisedButton(onPressed:() {
-            Navigator.of(context).pop(context);
+              SizedBox(
+                height: 15,
+              ),
+              RaisedButton(
+                onPressed: () {
+                  BlocProvider.of<Cubits>(context).postCheckpointData();
 
-          },
-            color: kPrimaryColor,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Text('Done', style: TextStyle(fontSize: 18 , color: Colors.white)),
-
-          ),
-
-
-
-
-
-
-        ]
-
-        ),
+                  Navigator.of(context).pop(context);
+                },
+                color: kPrimaryColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text('Done',
+                    style: TextStyle(fontSize: 18, color: Colors.white)),
+              ),
+            ]),
+          );
+        },
       ),
-
     );
-
   }
 
   Future openDescriptionDialog() => showDialog(

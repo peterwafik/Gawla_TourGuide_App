@@ -14,6 +14,8 @@ import 'package:gawla/pages/navPages/explore.dart';
 import 'package:gawla/pages/navPages/newsfeed.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/pages/navPages/trips.dart';
+import 'package:gawla/widgets/appbar.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     //Controller usage: so that every time i click a button, it gets rebuild
     //so i need to refer to a context which is represented by "vsync"
     return Scaffold(
+      appBar: header(context),
       key: _key,
       drawer: Drawer(
         child: MainDrawer(),
@@ -232,38 +235,3 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 }
 
-//To design/paint the "dot effect" that appears below selected labels
-class CircleTabIndicator extends Decoration {
-  //to design the indicator it is done externally
-  final Color color;
-  double radius;
-
-  CircleTabIndicator({required this.color, required this.radius});
-
-  @override
-  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    // TODO: implement createBoxPainter
-    return _CirclePainter(color: color, radius: radius);
-    //throw UnimplementedError();
-  }
-}
-
-class _CirclePainter extends BoxPainter {
-  final Color color;
-  double radius;
-
-  _CirclePainter({required this.color, required this.radius});
-
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    // TODO: implement paint
-
-    Paint _paint = Paint();
-    _paint.color = color;
-    _paint.isAntiAlias = true;
-    final Offset circleOffset = Offset(
-        configuration.size!.width / 2 - radius / 2,
-        configuration.size!.height - radius);
-    canvas.drawCircle(offset + circleOffset, radius, _paint);
-  }
-}

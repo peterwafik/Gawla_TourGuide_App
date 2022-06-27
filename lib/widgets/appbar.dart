@@ -9,10 +9,13 @@ AppBar header(context) {
     backgroundColor: Colors.white,
     elevation: 0.0,
     leading: Builder(
-      builder: (context) => IconButton(
-        padding: const EdgeInsets.only(top: 10.0),
-        icon: Icon(Icons.subject,color: Colors.black),
-        onPressed: () => Scaffold.of(context).openDrawer(),//make it open the drawer
+      builder: (context) => InkWell(
+        child: IconButton(
+          padding: const EdgeInsets.only(top: 10.0),
+          icon: Icon(Icons.subject,color: Colors.black),
+          onPressed: () => Scaffold.of(context).openDrawer(),//make it open the drawer
+        ),
+        onTap: ()=> print("tapped"),
       ),
     ),
 
