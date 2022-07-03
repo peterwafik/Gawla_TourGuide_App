@@ -121,44 +121,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Page2(),
                                   CreditStep(),
                                   //HomePage(),
-                                ],
-                                title: [
-                                  PTitle(title: "Personal Info"),
-                                  PTitle(title: "Professional Info", ),
-                                  PTitle(title: "Credit Info"),
-
-                                ]
-                            )
+                            ], title: [
+                              PTitle(title: "Personal Info"),
+                              PTitle(
+                                title: "Professional Info",
+                              ),
+                              PTitle(title: "Credit Info"),
+                            ])
                           ],
                         ),
                       ),
                     );
-
-                  }
-              ),
-
-        Positioned(
-          bottom: 20,
-          right: 80,
-          child:TextButton(
-            onPressed: () {
-              /*Navigator.push(context,
+                  }),
+              Positioned(
+                  bottom: 20,
+                  right: 80,
+                  child: TextButton(
+                    onPressed: () {
+                      /*Navigator.push(context,
                   MaterialPageRoute(builder: (context)=> const LoginScreen())
               );*/
-              BlocProvider.of<Cubits>(context).goLogin();
-            },
-            child: const Text(
-              'Already Have An Account?',
-            ),
-            style: TextButton.styleFrom(
-                primary: kPrimaryColor,
-                textStyle:
-                const TextStyle(fontSize: 18,)),
-          ))
+                      BlocProvider.of<Cubits>(context).goLogin();
+                    },
+                    child: const Text(
+                      'Already Have An Account?',
+                    ),
+                    style: TextButton.styleFrom(
+                        primary: kPrimaryColor,
+                        textStyle: const TextStyle(
+                          fontSize: 18,
+                        )),
+                  ))
             ],
-
           )),
-
 
 /*
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

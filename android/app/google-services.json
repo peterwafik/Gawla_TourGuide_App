@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "108959930571",
+    "project_id": "gawla-1c2ba",
+    "storage_bucket": "gawla-1c2ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108959930571:android:79e55a6ce2baf1bebfe34e",
+        "android_client_info": {
+          "package_name": "com.company.gawla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108959930571-v0tlipqi2prnfjcm6ovsn0lflujrk1en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv7miDfY94qKFbX1DD-ab30S-21wkqzHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108959930571-v0tlipqi2prnfjcm6ovsn0lflujrk1en.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

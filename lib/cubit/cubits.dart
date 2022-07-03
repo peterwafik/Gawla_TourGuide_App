@@ -67,6 +67,11 @@ class Cubits extends Cubit<CubitStates> {
       emit(CreateTourState());//once data loaded, trigger the loaded state with the new updated data
     } catch (e) {}
   }
+  void goCreateCheckpoint()async {
+    try {
+      emit(CheckpointState());//once data loaded, trigger the loaded state with the new updated data
+    } catch (e) {}
+  }
 
   detailPage(DataModel tourCreators,TourModel tour){
     emit(DetailState(tourCreators, tour));
@@ -82,6 +87,9 @@ class Cubits extends Cubit<CubitStates> {
   }
   goContact(){
     emit(ContactState());
+  }
+  goNotification(){
+    emit(NotificationState());
   }
 
   goLogin(){

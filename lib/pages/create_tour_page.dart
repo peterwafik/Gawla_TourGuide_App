@@ -179,7 +179,7 @@ class _CreateTourPageState extends State<CreateTourPage> {
                         AppText(text: "Route", color: Colors.black),
                         Spacer(),
                         Container(
-                          width: 310,
+                          width: 315,
                           height: 150,
                           child: Checkpoint(),
                         )
@@ -298,7 +298,7 @@ class _CreateTourPageState extends State<CreateTourPage> {
                             minLines: 10,
                             maxLines: 20,
                             decoration: const InputDecoration(
-                                hintText: 'Type someting here',
+                                hintText: 'Type something here',
                                 contentPadding: EdgeInsets.all(15),
                                 border: InputBorder.none),
                             onChanged: (value) {},

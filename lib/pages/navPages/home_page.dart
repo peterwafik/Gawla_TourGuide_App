@@ -39,6 +39,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     //Controller usage: so that every time i click a button, it gets rebuild
     //so i need to refer to a context which is represented by "vsync"
     return Scaffold(
+      /*floatingActionButton: FloatingActionButton(
+        onPressed: () {  BlocProvider.of<Cubits>(context).goCreateTour(); },
+        backgroundColor: Colors.black,
+        mini: true,
+        child: Icon(Icons.add),
+
+      ),*/
+
       appBar: header(context),
       key: _key,
       drawer: Drawer(
@@ -175,8 +183,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     setState(() {
                       navigationTapped(4);
                     });
-                    selectItem(4);
-                    print(_page);
+                    //selectItem(4);
+                    //print(_page);
+                    BlocProvider.of<Cubits>(context).goCreateTour();
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20.0),

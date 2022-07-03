@@ -2,8 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gawla/cubit/cubit_logics.dart';
 import 'package:gawla/pages/authPages/Login/login_screen.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
+import 'package:gawla/services/data_services.dart';
 
 import '../cubit/cubits.dart';
 
@@ -30,7 +32,7 @@ class MainDrawer extends StatelessWidget {
                 height: 5.0,
               ),
               Text(
-                "Lee Wang",
+                "Peter Wafik",
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w800,
@@ -40,7 +42,7 @@ class MainDrawer extends StatelessWidget {
                 height: 5.0,
               ),
               Text(
-                "leewang2@gmail.com",
+                "peterwafik2@gmail.com",
                 style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w400,
@@ -91,8 +93,18 @@ class MainDrawer extends StatelessWidget {
 
       ListTile(
         onTap: () {
-          BlocProvider.of<Cubits>(context).getAuthData();
-
+          runApp(
+            MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home:  BlocProvider<Cubits>(//BlockProvider: injects cubits
+                create: (context)=>Cubits(
+                  data: DataServices(),
+                ),//pass the class of function,create the cubit
+                child: CubitLogics(),//then show the logic
+                //pass the child that checks the cubits/states
+              ),
+            ),
+          );
     },
         leading: Icon(
           Icons.assignment_return_outlined,

@@ -16,6 +16,7 @@ class _MyTripsState extends State<MyTrips> {
     "user4.jpg",
     "user5.jpg"
   ];
+  List tours =["assets/img/destination1.jpg","assets/img/destination2.jpg"];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -36,7 +37,7 @@ class _MyTripsState extends State<MyTrips> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
-                    image: AssetImage("assets/img/mountain.jpeg"),
+                    image: AssetImage(tours[index]),
                     fit: BoxFit.cover,
                   ),
                 ),

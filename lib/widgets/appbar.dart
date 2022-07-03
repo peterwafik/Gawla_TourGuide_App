@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:gawla/constants.dart';
+import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
 
 AppBar header(context) {
@@ -75,7 +77,7 @@ AppBar header(context) {
     ),
     actions: [
       InkWell(
-        onTap: () => print('tapped!'),
+        onTap: () => BlocProvider.of<Cubits>(context).goNotification(),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 17.0, horizontal: 10),
           child: Stack(

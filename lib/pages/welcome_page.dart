@@ -17,6 +17,7 @@ class welcomePage extends StatefulWidget {
 
 class _welcomePageState extends State<welcomePage> {
   List images = ["one.png","two.jpg","three.png"];
+  List texts = ["Forget about the traditional tour guiding ways.","Enhance your career with a new generation of tour-organizing experience.","Leave your creative mark on tourists from all around the world with just the tip of your finger."];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +45,9 @@ class _welcomePageState extends State<welcomePage> {
                            //AppText(text: "Egypt",size:30),
                            SizedBox(height: 20,),
                            Container(
-                             width: 250,
+                             width: 350,
                              child: AppText(
-                               text:"Spice your trip with tours like no other.",
+                               text:texts[index],
                                color: AppColors.textColor2,
                                size: 14,
                              )

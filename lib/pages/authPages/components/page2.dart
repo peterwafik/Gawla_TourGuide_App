@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:gawla/components/validator.dart';
 import 'package:gawla/constants.dart';
 import 'package:gawla/pages/authPages/components/textField.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
 
 class Page2 extends StatefulWidget {
@@ -70,6 +71,42 @@ class _Page2State extends State<Page2> {
             ),
             SizedBox(height: 20,),
 
+            /*
+            Container(
+              height: 50,
+              width: 50,
+              //padding: EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xffeeeeee),
+                    blurRadius: 10,
+
+                  )
+                ]
+
+              ),
+              child: InternationalPhoneNumberInput(
+                    onInputChanged: (value){},
+                    cursorColor: Colors.black,
+                selectorConfig: SelectorConfig(
+                  selectorType: PhoneInputSelectorType.DROPDOWN
+                ),
+                    inputDecoration: InputDecoration(
+                        //contentPadding: EdgeInsets.only(bottom: 15,right: 15),
+                        border: InputBorder.none,
+                        hintText: "Phone Number",
+                        hintStyle: TextStyle(
+                          color: Colors.grey.shade500,
+                          fontSize: 9,
+                        )
+                    ),
+
+
+                  ),
+
+            ),*/
             TextFormField(
 
               //validator: validateEmail,

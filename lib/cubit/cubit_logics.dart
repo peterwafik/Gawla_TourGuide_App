@@ -11,6 +11,7 @@ import 'package:gawla/pages/navPages/contact_page.dart';
 import 'package:gawla/pages/navPages/edit_profile_page.dart';
 import 'package:gawla/pages/navPages/home_page.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
+import 'package:gawla/pages/notifications_page.dart';
 import 'package:gawla/pages/tour_page.dart';
 import 'package:gawla/pages/welcome_page.dart';
 
@@ -45,6 +46,9 @@ class _CubitLogicsState extends State<CubitLogics> {
           if(state is ContactState){
             startChat(context);
             return ContactPage();
+          }
+          if(state is NotificationState){
+            return NotificationsPage();
           }
           if(state is SettingsState){
             return SettingsPage();

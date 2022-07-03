@@ -21,16 +21,13 @@ class ContactPage extends StatelessWidget {
     return Container();
   }
 }
-
 Future<ContactListPage?> startChat(context) async{
   const apiKey = "r7p9bw265rbt";//appears in homepage
   const userToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNvdXJjZSI6ImFuYWx5dGljcyIsImFjdGlvbiI6IioiLCJ1c2VyX2lkIjoiKiJ9.YYcYqjKuqxHgDJixQSu4GDpTfjHzQon82RA_fHV9ChE";//from analytics side bar
-
   final client = StreamChatClient(
     apiKey,
     logLevel: Level.INFO,
   );
-
   await client.connectUser(
     User(
       id: 'Vision',
@@ -40,7 +37,6 @@ Future<ContactListPage?> startChat(context) async{
     ),
     userToken,
   );
-
   /// Creates a channel using the type `messaging` and `coolkids`.
   /// Channels are containers for holding messages between different members. To
   /// learn more about channels and some of our predefined types, checkout our
@@ -53,7 +49,6 @@ Future<ContactListPage?> startChat(context) async{
       "image": "https://pyxis.nymag.com/v1/imgs/1ec/f1c/a9bc3b8b01cfa5b3f8e7598f611654b563-vision-wandavision.rsquare.w700.jpg",
     },
   );
-
   /// `.watch()` is used to create and listen to the channel for updates. If the
   /// channel already exists, it will simply listen for new events.
   channel.watch();

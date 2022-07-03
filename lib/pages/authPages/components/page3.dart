@@ -126,7 +126,6 @@ class _CreditStepState extends State<CreditStep> {
               ),
               SizedBox(width: 50,),
 
-
             ],
           ),
 

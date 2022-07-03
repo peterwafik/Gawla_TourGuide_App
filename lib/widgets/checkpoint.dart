@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/constants.dart';
+import 'package:gawla/cubit/cubits.dart';
 import 'package:gawla/pages/create_checkpoint_page.dart';
 
 class Checkpoint extends StatelessWidget {
@@ -28,18 +30,15 @@ class _SOFState extends State<SOF> {
 
     return Container(
         //decoration: BoxDecoration(color: Colors.deepPurpleAccent),
-      constraints: BoxConstraints(minWidth: 50),
-      width: 50,
+      constraints: BoxConstraints(minWidth: 70),
+      width: 70,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           FlatButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CheckpointPage()));
+              BlocProvider.of<Cubits>(context).goCreateCheckpoint();
             },
             color: AppColors.buttonBackground,
             shape: RoundedRectangleBorder(
@@ -86,7 +85,7 @@ class _SOFState extends State<SOF> {
             children: <Widget>[
               Container(
                 alignment: Alignment.topRight,
-                width: 120,
+                width: 140,
                 height: 140,
                 child: ListView.builder(
                   itemCount: cards.length,
