@@ -1,12 +1,21 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/constants.dart';
+import 'package:gawla/cubit/cubit_logics.dart';
 import 'package:gawla/cubit/cubits.dart';
+import 'package:gawla/pages/authPages/Login/login_screen.dart';
+import 'package:gawla/services/data_services.dart';
 import 'package:gawla/widgets/app_large_text.dart';
 import 'package:gawla/widgets/app_text.dart';
 import 'package:gawla/widgets/responsive_button.dart';
+import 'package:provider/provider.dart';
+
+import 'authPages/authentication_service.dart';
+import 'navPages/home_page.dart';
 
 class welcomePage extends StatefulWidget {
   const welcomePage({Key? key}) : super(key: key);
@@ -82,8 +91,22 @@ class _welcomePageState extends State<welcomePage> {
                        child: Container(
                          width: 300,
                          child: GestureDetector(
-                           onTap: (){
-                             BlocProvider.of<Cubits>(context).getAuthData();//holds the cubit and can access them
+                           onTap: () {
+
+                             Navigator.push(context,
+                                 MaterialPageRoute(builder: (context)=> MultiProvider(
+                                   providers: [
+                                     Provider<AuthenticationService>(
+                                       create: (_) => AuthenticationService(FirebaseAuth.instance),
+                                     ),
+                                     StreamProvider(
+                                       create: (context) => context.read<AuthenticationService>().authStateChanges, initialData: null,
+                                     )
+                                   ],
+                                   child: AuthenticationWrapper(),
+                                 ))
+                             );
+                             //BlocProvider.of<Cubits>(context).getAuthData();//holds the cubit and can access them
                            },
                            child: Container(
                                width: 100,
@@ -106,5 +129,30 @@ class _welcomePageState extends State<welcomePage> {
              );
       }),
     );
+  }
+}
+class AuthenticationWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
+
+    if (firebaseUser != null) {
+      return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              scaffoldBackgroundColor: Colors.white,
+              primaryColor: Colors.white
+          ),
+          //supportedLocales: i18n.all,
+          home: BlocProvider<Cubits>(//BlockProvider: injects cubits
+            create: (context)=>Cubits(
+              data: DataServices(),
+            ),//pass the class of function,create the cubit
+            child: CubitLogics(),//then show the logic
+            //pass the child that checks the cubits/states
+          )
+      );
+    }
+    return LoginScreen();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:gawla/models/user_model.dart';
 import 'package:gawla/models/tour_model.dart';
+import 'package:gawla/pages/navPages/home_page.dart';
 import 'package:gawla/services/data_services.dart';
 
 import 'cubit_states.dart';
@@ -12,7 +13,7 @@ class Cubits extends Cubit<CubitStates> {
   late final tourCreator;
   //what's written between "<>" is what will be listened to by the cubit
   Cubits({required this.data}) : super(InitialState()) {
-    emit(WelcomeState()); //once initial state is done, emit new state
+    getData(); //once initial state is done, emit new state
   } //Cubits parameters declaration are those of the InitialState()
   void getData()async {
     try {

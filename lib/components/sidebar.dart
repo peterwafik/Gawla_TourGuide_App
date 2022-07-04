@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gawla/cubit/cubit_logics.dart';
 import 'package:gawla/pages/authPages/Login/login_screen.dart';
+import 'package:gawla/pages/authPages/authentication_service.dart';
 import 'package:gawla/pages/navPages/profile_page.dart';
 import 'package:gawla/services/data_services.dart';
 
@@ -93,7 +94,7 @@ class MainDrawer extends StatelessWidget {
 
       ListTile(
         onTap: () {
-          runApp(
+          /*runApp(
             MaterialApp(
               debugShowCheckedModeBanner: false,
               home:  BlocProvider<Cubits>(//BlockProvider: injects cubits
@@ -104,7 +105,8 @@ class MainDrawer extends StatelessWidget {
                 //pass the child that checks the cubits/states
               ),
             ),
-          );
+          );*/
+          context.read<AuthenticationService>().signOut();
     },
         leading: Icon(
           Icons.assignment_return_outlined,
