@@ -80,7 +80,14 @@ class _TourPageState extends State<TourPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,//TO PUSH BOTH SIDES TO THE EDGE
                           children: [
-                            AppLargeText(text: detail.tour.name,color: Colors.black),
+                            Container(
+                              width: 300,
+                              height: 80,
+                              child: Text(detail.tour.name,
+                                  //textAlign: TextAlign.center,
+                                  style:const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                                  ),
+                            ),
                             AppLargeText(text: "\$"+detail.tour.price.toString(),color: AppColors.mainColor)
 
                           ],
@@ -90,7 +97,7 @@ class _TourPageState extends State<TourPage> {
                           children: [
                             Icon(Icons.location_pin,color: AppColors.mainColor,),
                             SizedBox(width: 5,),
-                            AppText(text: "Usa,California",color: AppColors.textColor1,)
+                            AppText(text: detail.tour.location.toString()+", Egypt",color: AppColors.textColor1,)
                           ],
                         ),
                         SizedBox(height: 20,),

@@ -23,17 +23,19 @@ class Cubits extends Cubit<CubitStates> {
       emit(LoadedState(tourCreators,tours));//once data loaded, trigger the loaded state with the new updated data
     } catch (e) {}
   }
-  void postTourData()async{
+  void postTourData(name,category,photo,cost,description,location,participants)async{
     try {
+      print(name.toString());
     data.postTourInfo(
+
       //1001,
-      "Peter Wafik",
-      "cultural",
-      "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/02/Tom-Holland-unico-Peter-Parker-Spider-Man.jpg?fit=1280%2C720&quality=80&ssl=1",
-      2000,
-      "This is just a test to see whether the posting process would succeed or not",
-      "Cairo",
-      30,
+      name,
+      category,
+      photo,
+      25,
+      description,
+      location,
+      10,
     );
     } catch (e) {
       print(e);

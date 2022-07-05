@@ -53,10 +53,7 @@ Future<ContactListPage?> startChat(context) async{
   /// channel already exists, it will simply listen for new events.
   channel.watch();
 //  print("so far not so good");
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => ContactListPage(client: client,channel: channel,)),
-  );
+  runApp(ContactListPage(client: client,channel: channel,));
 }
 
 class ContactListPage extends StatelessWidget {
@@ -72,14 +69,13 @@ class ContactListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     print("so far so good");
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return StreamChat(client: client, child: child);
       },
       home: StreamChannel(
         channel: channel,
-        child: ChatList(),
+        child: const ChatList(),
       ),
     );
   }
@@ -134,18 +130,14 @@ class ChatList extends StatelessWidget {
           IconButton(onPressed: (){}, icon: Icon(Icons.edit))
         ],
       ),
-      body: BlocProvider<Cubits>(//BlockProvider: injects cubits
-        create: (context)=>Cubits(
-          data: DataServices(),
-        ),//pass the class of function,create the cubit
-        child:  ChannelsBloc(
+      body: ChannelsBloc(
           child: ChannelListView(
             channelWidget: ChannelPage(),
 
           ),),
           //then show the logic
         //pass the child that checks the cubits/states
-      ),
+
 
 
     );

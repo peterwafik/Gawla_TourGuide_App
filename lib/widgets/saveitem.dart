@@ -15,6 +15,9 @@ class SavedItem extends StatefulWidget {
 
 class _SavedItemState extends State<SavedItem> {
   List images = ["destination1.jpg","destination2.jpg","destination3.jpg"];
+  List places = ["Pyramids of Giza","Avenue of Sphinx","NMEC Museum"];
+  List city = ["Giza","Aswan","Cairo"];
+
 
   @override
   Widget build(BuildContext context) {
@@ -238,7 +241,7 @@ class _SavedItemState extends State<SavedItem> {
                     .start,
                 children: [
                   Text(
-                    "city",
+                    city[index],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
@@ -247,7 +250,7 @@ class _SavedItemState extends State<SavedItem> {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    "Places",
+                    places[index],
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -263,7 +266,7 @@ class _SavedItemState extends State<SavedItem> {
                       ),
                       SizedBox(width: 2),
                       Text(
-                        "location",
+                        "Egypt",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Ubuntu-Regular',

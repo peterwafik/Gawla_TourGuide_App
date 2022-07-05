@@ -44,6 +44,16 @@ class _CreateTourPageState extends State<CreateTourPage> {
   }
 
   late final DataServices data;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
+  final TextEditingController photoController = TextEditingController();
+  final TextEditingController costController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
+  final TextEditingController participantsController = TextEditingController();
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -136,9 +146,12 @@ class _CreateTourPageState extends State<CreateTourPage> {
                             Container(
                               width: 130,
                               child: TextField(
+                                controller: nameController,
+
                                 //textAlign: TextAlign.center,
                                 decoration: InputDecoration(
                                     hintText: 'Tour name',
+
                                     contentPadding: const EdgeInsets.all(15),
                                     border: OutlineInputBorder(
                                         borderRadius:
@@ -159,6 +172,8 @@ class _CreateTourPageState extends State<CreateTourPage> {
                         Container(
                           width: 110,
                           child: TextField(
+                            controller: locationController,
+
                             //textAlign: TextAlign.center,
                             decoration: InputDecoration(
                                 hintText: 'City name',
@@ -196,6 +211,8 @@ class _CreateTourPageState extends State<CreateTourPage> {
                         Container(
                           width: 70,
                           child: TextField(
+                            controller: participantsController,
+
                             //textAlign: TextAlign.center,
                             decoration: InputDecoration(
                                 hintText: '0',
@@ -220,6 +237,8 @@ class _CreateTourPageState extends State<CreateTourPage> {
                         Container(
                           width: 70,
                           child: TextField(
+                            controller: costController,
+
                             //textAlign: TextAlign.center,
                             decoration: InputDecoration(
                                 hintText: '0',
@@ -243,6 +262,8 @@ class _CreateTourPageState extends State<CreateTourPage> {
                           width: 80,
                           height: 80,
                           child: TextField(
+                            controller: photoController,
+
                             //textAlign: TextAlign.center,
                             decoration: InputDecoration(
                                 hintText: '+',
@@ -295,6 +316,8 @@ class _CreateTourPageState extends State<CreateTourPage> {
                                   color: Colors.purple,
                                   style: BorderStyle.solid)),
                           child: TextField(
+                            controller: descriptionController,
+
                             minLines: 10,
                             maxLines: 20,
                             decoration: const InputDecoration(
@@ -315,7 +338,16 @@ class _CreateTourPageState extends State<CreateTourPage> {
                           child: ElevatedButton(
                             child: Text("Submit"),
                             onPressed: () {
-                              BlocProvider.of<Cubits>(context).postTourData();
+                              BlocProvider.of<Cubits>(context).postTourData(
+                                nameController.text.toString(),
+                                  "Cultural",
+                                  photoController.text.toString(),
+                                  costController,
+                                  descriptionController.text.toString(),
+                                  locationController.text.toString(),
+                                  participantsController
+                              );
+                              BlocProvider.of<Cubits>(context).goHome();
                               //NewsFeed();
                             },
                           )),

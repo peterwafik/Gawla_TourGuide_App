@@ -54,12 +54,15 @@ class _ExploreGridsState extends State<ExploreGrids> {
                             color: Colors.white,
                           ),
                           SizedBox(width: 5),
-                          Text(
-                            tourInfo[1].name,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontFamily: 'Ubuntu-Regular'),
+                          Container(
+                            width: 100,
+                            child: Text(
+                              tourInfo[index].name,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontFamily: 'Ubuntu-Regular'),
+                            ),
                           ),
                         ],
                       ),

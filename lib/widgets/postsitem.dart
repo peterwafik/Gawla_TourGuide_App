@@ -13,7 +13,7 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
-  List images = ["destination1.jpg","destination2.jpg","destination3.jpg"];
+  List images = ["event1.jpg","event2.jpg","event3.jpg"];
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +55,13 @@ class _PostItemState extends State<PostItem> {
                         color: Colors.white,
                       ),
                       SizedBox(width: 5),
-                      Text(
+                      /*Text(
                         tourInfo[1].name,
                         style: TextStyle(
                             fontSize: 12,
                             color: Colors.white,
                             fontFamily: 'Ubuntu-Regular'),
-                      ),
+                      ),*/
                       Spacer(),
                       Text(
                         Random().nextInt(2000).toString(),
